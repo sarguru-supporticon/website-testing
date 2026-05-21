@@ -3,9 +3,13 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
+// GitHub Pages project sites are served from /{repo-name}/ — set VITE_BASE_PATH in CI.
+// Custom domain (supporticon.com) uses VITE_BASE_PATH=/ or omit it.
+const basePath = process.env.VITE_BASE_PATH ?? "/";
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: mode === 'production' ? '/' : '/',
+  base: mode === "production" ? basePath : "/",
   server: {
     host: "::",
     port: 8080,

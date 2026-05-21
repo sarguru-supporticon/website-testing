@@ -8,6 +8,7 @@ import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 import { CaseStudiesList } from "@/components/CaseStudiesList";
 import { Play, Clock, ArrowRight, Sparkles, BookOpen, CalendarDays } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
+import { assetUrl } from "@/lib/baseUrl";
 
 const categories = [
   { id: "sources", label: "Sources" },
@@ -322,7 +323,7 @@ const Resources = () => {
             <div className="bg-white/70 backdrop-blur-md rounded-3xl border border-green-100 shadow-xl overflow-hidden">
               <div className="relative aspect-video bg-gradient-to-br from-slate-900 to-slate-800">
                 <video className="w-full h-full object-contain bg-white" controls playsInline poster={videoThumbnail} controlsList="nodownload">
-                  <source src="/supporticon_video_720p.mp4" type="video/mp4" />
+                  <source src={assetUrl("/supporticon_video_720p.mp4")} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>

@@ -103,7 +103,9 @@ function App() {
             {isLoading && <Preloader onLoadingComplete={() => setIsLoading(false)} />}
           </AnimatePresence>
 
-          <BrowserRouter>
+          <BrowserRouter
+            basename={import.meta.env.BASE_URL.replace(/\/$/, "") || undefined}
+          >
             <ScrollToTop />
             <div className={`relative min-h-screen ${isLoading ? 'h-screen overflow-hidden' : ''}`}>
               <WaveBackground />
