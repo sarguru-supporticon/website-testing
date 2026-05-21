@@ -11,6 +11,7 @@ import { DotLottiePlayer } from "@dotlottie/react-player";
 import businessTeamAnimation from "@/assets/business-team.lottie";
 import { CXLeadersForm } from "../components/CXLeadersForm";
 
+
 const steps = [
   {
     number: "1",
@@ -118,7 +119,7 @@ const Home = () => {
           </div>
         </section>
 
-        {/* The Problem Section */}
+     
         <section className="py-12 md:py-20 bg-white/40 backdrop-blur-md">
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-4xl text-center">
@@ -157,7 +158,7 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Our Mission Section */}
+       
         <section className="py-12 md:py-20">
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-4xl">
