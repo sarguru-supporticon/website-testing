@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { absoluteAssetUrl } from "@/lib/baseUrl";
 
 interface SEOProps {
   title: string;
@@ -15,6 +16,7 @@ export const SEO = ({ title, description, canonicalPath, image, jsonLd }: SEOPro
     : typeof window !== "undefined"
     ? window.location.href
     : "";
+  const imageUrl = image ? absoluteAssetUrl(image) : undefined;
 
   return (
     <Helmet>
@@ -24,11 +26,11 @@ export const SEO = ({ title, description, canonicalPath, image, jsonLd }: SEOPro
 
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      {image && <meta property="og:image" content={image} />}
+      {imageUrl && <meta property="og:image" content={imageUrl} />}
       <meta property="og:type" content="website" />
 
       <meta name="twitter:card" content="summary_large_image" />
-      {image && <meta name="twitter:image" content={image} />}
+      {imageUrl && <meta name="twitter:image" content={imageUrl} />}
 
       {jsonLd && (
         <script type="application/ld+json">

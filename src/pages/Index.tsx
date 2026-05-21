@@ -2,6 +2,7 @@ import { SEO } from "@/components/SEO";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/home-imge.png";
+import { supporticonUploads } from "@/assets/supporticon-uploads";
 import Spotlight from "@/components/Spotlight";
 import { Brain, Search, Plug, Heart, Shield, Users, Zap, Clock, Star, ArrowRight, FileText, Rocket, XCircle, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -67,7 +68,7 @@ const Home = () => {
           "@type": "Organization",
           name: "Supporticon Strategies Private Limited",
           url: typeof window !== "undefined" ? window.location.origin : undefined,
-          logo: "/supporticon-uploads/8a9c0dca-e50e-459a-afc4-1e08634ad78b.png",
+          logo: supporticonUploads.image2,
         }}
       />
       <main>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 import { Download, BookOpen, Brain, BarChart2, Rocket, ChevronDown, ChevronUp } from "lucide-react";
@@ -306,7 +307,7 @@ export default function EBooks() {
                 The evolution of every high-functioning customer success strategy centers around three C's: connected experiences, an engaging customer journey, and a culture built on customer-centricity. Satisfaction won't cut it — quarterbacking your customers to long-term success is proven to combat churn and transform customer success teams into revenue-drivers.
               </p>
               <p style={{ fontSize: "1rem", color: "#475569", lineHeight: 1.75, margin: "0 0 2rem 0" }}>
-                According to <strong>ChurnZero</strong>, reducing customer churn by just <strong>5%</strong> can increase profits from <strong>25% to 125%</strong>. This playbook gives you the data-driven strategies, automation plays, and segmentation models to get there. <a href="/resources" style={{ color: "#16a34a", textDecoration: "underline" }}>Explore all our resources here.</a>
+                According to <strong>ChurnZero</strong>, reducing customer churn by just <strong>5%</strong> can increase profits from <strong>25% to 125%</strong>. This playbook gives you the data-driven strategies, automation plays, and segmentation models to get there. <Link to="/resources" style={{ color: "#16a34a", textDecoration: "underline" }}>Explore all our resources here.</Link>
               </p>
 
               {/* What you'll get pills */}

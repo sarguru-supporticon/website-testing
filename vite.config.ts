@@ -28,8 +28,19 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
-    mode === 'development' &&
-    componentTagger(),
+    mode === "development" && componentTagger(),
+    {
+      name: "html-base-path",
+      transformIndexHtml(html) {
+        if (mode !== "production" || basePath === "/") return html;
+        return html
+          .replace(
+            /content="supporticon-uploads\//g,
+            `content="${basePath}supporticon-uploads/`
+          )
+          .replace(/href="favicon\.ico"/g, `href="${basePath}favicon.ico"`);
+      },
+    },
   ].filter(Boolean),
   resolve: {
     alias: {
