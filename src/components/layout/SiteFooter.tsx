@@ -14,12 +14,12 @@ const quickLinks = [
 
 export const SiteFooter = () => {
   return (
-    <footer className="relative pt-20 pb-8 overflow-hidden bg-[#0a1628]">
+    <footer className="relative pt-20 pb-8 overflow-hidden bg-[#e8faf0]">
       {/* Ambient glows */}
-      <div className="absolute top-0 right-[10%] w-[500px] h-[300px] bg-emerald-600/8 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-[5%] w-[400px] h-[280px] bg-teal-500/6 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 right-[10%] w-[500px] h-[300px] bg-emerald-300/30 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-[5%] w-[400px] h-[280px] bg-green-200/40 rounded-full blur-[100px] pointer-events-none" />
       {/* Top gradient fade */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent" />
 
       <div className="container mx-auto px-4 md:px-8 relative z-10">
 
@@ -35,7 +35,7 @@ export const SiteFooter = () => {
                 className="h-10 w-auto opacity-90 group-hover:opacity-100 transition-opacity"
               />
             </Link>
-            <p className="text-sm text-white/40 leading-relaxed max-w-[220px]">
+            <p className="text-sm text-slate-500 leading-relaxed max-w-[220px]">
               Empowering support teams with AI that works for people, not just metrics.
             </p>
 
@@ -50,7 +50,7 @@ export const SiteFooter = () => {
                   href={s.href}
                   aria-label={s.label}
                   whileHover={{ scale: 1.12 }}
-                  className="w-9 h-9 rounded-xl border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all duration-200"
+                  className="w-9 h-9 rounded-xl border border-emerald-200 flex items-center justify-center text-slate-400 hover:text-emerald-700 hover:border-emerald-400 hover:bg-emerald-100 transition-all duration-200"
                 >
                   <s.icon size={16} />
                 </motion.a>
@@ -60,7 +60,7 @@ export const SiteFooter = () => {
 
           {/* Quick links */}
           <div className="flex flex-col gap-5 md:pl-8">
-            <h3 className="text-sm font-bold text-white/80 uppercase tracking-widest">
+            <h3 className="text-sm font-bold text-slate-700 uppercase tracking-widest">
               Quick Links
             </h3>
             <ul className="flex flex-col gap-2.5">
@@ -68,7 +68,7 @@ export const SiteFooter = () => {
                 <li key={link.name}>
                   <Link
                     to={link.path}
-                    className="group flex items-center gap-1 text-sm text-white/45 hover:text-white transition-colors duration-200"
+                    className="group flex items-center gap-1 text-sm text-slate-500 hover:text-emerald-700 transition-colors duration-200"
                   >
                     {link.name}
                     <ArrowUpRight className="w-3 h-3 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 transition-all duration-200" />
@@ -80,13 +80,13 @@ export const SiteFooter = () => {
 
           {/* Contact */}
           <div className="flex flex-col gap-5">
-            <h3 className="text-sm font-bold text-white/80 uppercase tracking-widest">
+            <h3 className="text-sm font-bold text-slate-700 uppercase tracking-widest">
               Head Office
             </h3>
             <ul className="flex flex-col gap-5">
               <li className="flex gap-3 items-start">
-                <MapPin className="w-4 h-4 text-white/25 shrink-0 mt-0.5" />
-                <span className="text-sm text-white/45 leading-relaxed">
+                <MapPin className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <span className="text-sm text-slate-500 leading-relaxed">
                   7-14/4, Madam Sandhu,
                   <br />
                   Tharamangalam, Salem,
@@ -95,40 +95,40 @@ export const SiteFooter = () => {
                 </span>
               </li>
               <li className="flex gap-3 items-center">
-                <Mail className="w-4 h-4 text-white/25 shrink-0" />
+                <Mail className="w-4 h-4 text-emerald-400 shrink-0" />
                 <a
                   href="mailto:founder@supporticon.com"
-                  className="text-sm text-white/45 hover:text-white transition-colors duration-200"
+                  className="text-sm text-slate-500 hover:text-emerald-700 transition-colors duration-200"
                 >
                   founder@supporticon.com
                 </a>
               </li>
               <li className="flex gap-3 items-center">
-                <Phone className="w-4 h-4 text-white/25 shrink-0" />
-                <span className="text-sm text-white/45">+91 866 734 7679</span>
+                <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span className="text-sm text-slate-500">+91 866 734 7679</span>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="h-px bg-white/8" />
+        <div className="h-px bg-emerald-200/60" />
 
         {/* Bottom bar */}
         <div className="pt-7 flex flex-col md:flex-row items-center justify-between gap-3 text-center">
-          <p className="text-xs text-white/25 font-medium">
+          <p className="text-xs text-slate-400 font-medium">
             Copyright &copy; 2025 supporticon.com. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
             <Link
               to="/legal"
-              className="text-xs text-white/25 hover:text-white/60 transition-colors duration-200"
+              className="text-xs text-slate-400 hover:text-emerald-700 transition-colors duration-200"
             >
               Privacy Policy
             </Link>
             <Link
               to="/legal"
-              className="text-xs text-white/25 hover:text-white/60 transition-colors duration-200"
+              className="text-xs text-slate-400 hover:text-emerald-700 transition-colors duration-200"
             >
               Terms of Service
             </Link>
