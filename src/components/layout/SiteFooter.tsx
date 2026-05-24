@@ -35,7 +35,7 @@ export const SiteFooter = () => {
                 className="h-10 w-auto opacity-90 group-hover:opacity-100 transition-opacity"
               />
             </Link>
-            <p className="text-sm text-emerald-200/50 leading-relaxed max-w-[220px]">
+            <p className="text-sm text-white/80 leading-relaxed max-w-[220px]">
               Empowering support teams with AI that works for people, not just metrics.
             </p>
 
@@ -50,7 +50,7 @@ export const SiteFooter = () => {
                   href={s.href}
                   aria-label={s.label}
                   whileHover={{ scale: 1.12 }}
-                  className="w-9 h-9 rounded-xl border border-emerald-700/50 flex items-center justify-center text-emerald-400/60 hover:text-white hover:border-emerald-400 hover:bg-emerald-800/50 transition-all duration-200"
+                  className="w-9 h-9 rounded-xl border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 hover:bg-white/10 transition-all duration-200"
                 >
                   <s.icon size={16} />
                 </motion.a>
@@ -60,7 +60,7 @@ export const SiteFooter = () => {
 
           {/* Quick links */}
           <div className="flex flex-col gap-5 md:pl-8">
-            <h3 className="text-sm font-bold text-emerald-200/70 uppercase tracking-widest">
+            <h3 className="text-sm font-bold text-white uppercase tracking-widest">
               Quick Links
             </h3>
             <ul className="flex flex-col gap-2.5">
@@ -68,7 +68,7 @@ export const SiteFooter = () => {
                 <li key={link.name}>
                   <Link
                     to={link.path}
-                    className="group flex items-center gap-1 text-sm text-emerald-200/45 hover:text-white transition-colors duration-200"
+                    className="group flex items-center gap-1 text-sm text-white/75 hover:text-white transition-colors duration-200"
                   >
                     {link.name}
                     <ArrowUpRight className="w-3 h-3 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 transition-all duration-200" />
@@ -80,13 +80,13 @@ export const SiteFooter = () => {
 
           {/* Contact */}
           <div className="flex flex-col gap-5">
-            <h3 className="text-sm font-bold text-emerald-200/70 uppercase tracking-widest">
+            <h3 className="text-sm font-bold text-white uppercase tracking-widest">
               Head Office
             </h3>
             <ul className="flex flex-col gap-5">
               <li className="flex gap-3 items-start">
-                <MapPin className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                <span className="text-sm text-emerald-200/45 leading-relaxed">
+                <MapPin className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <span className="text-sm text-white/75 leading-relaxed">
                   7-14/4, Madam Sandhu,
                   <br />
                   Tharamangalam, Salem,
@@ -95,17 +95,17 @@ export const SiteFooter = () => {
                 </span>
               </li>
               <li className="flex gap-3 items-center">
-                <Mail className="w-4 h-4 text-emerald-500 shrink-0" />
+                <Mail className="w-4 h-4 text-emerald-400 shrink-0" />
                 <a
                   href="mailto:founder@supporticon.com"
-                  className="text-sm text-emerald-200/45 hover:text-white transition-colors duration-200"
+                  className="text-sm text-white/75 hover:text-white transition-colors duration-200"
                 >
                   founder@supporticon.com
                 </a>
               </li>
               <li className="flex gap-3 items-center">
-                <Phone className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span className="text-sm text-emerald-200/45">+91 866 734 7679</span>
+                <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span className="text-sm text-white/75">+91 866 734 7679</span>
               </li>
             </ul>
           </div>
@@ -116,19 +116,19 @@ export const SiteFooter = () => {
 
         {/* Bottom bar */}
         <div className="pt-7 flex flex-col md:flex-row items-center justify-between gap-3 text-center">
-          <p className="text-xs text-emerald-200/30 font-medium">
+          <p className="text-xs text-white/50 font-medium">
             Copyright &copy; 2025 supporticon.com. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
             <Link
               to="/legal"
-              className="text-xs text-emerald-200/30 hover:text-white transition-colors duration-200"
+              className="text-xs text-white/50 hover:text-white transition-colors duration-200"
             >
               Privacy Policy
             </Link>
             <Link
               to="/legal"
-              className="text-xs text-emerald-200/30 hover:text-white transition-colors duration-200"
+              className="text-xs text-white/50 hover:text-white transition-colors duration-200"
             >
               Terms of Service
             </Link>
