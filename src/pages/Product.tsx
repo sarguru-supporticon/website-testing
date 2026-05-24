@@ -1,7 +1,21 @@
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Zap, FileText, Sparkles, Sliders, Route, Lock, ChevronDown, Plug } from "lucide-react";
+import {
+  Zap,
+  FileText,
+  Sparkles,
+  Sliders,
+  Route,
+  Lock,
+  ChevronDown,
+  Plug,
+  Search,
+  Mail,
+  BookOpen,
+  BarChart,
+  Users,
+} from "lucide-react";
 import { useState, useEffect } from "react";
 import RequestDemoDialog from "@/components/RequestDemoDialog";
 import ImageWithLoader from "@/components/ImageWithLoader";
@@ -20,6 +34,9 @@ const Product = () => {
 
   const [open, setOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [activeTab, setActiveTab] = useState<"freshdesk" | "standalone">(
+    "freshdesk",
+  );
 
   // Check if device is mobile
   useEffect(() => {
@@ -28,9 +45,9 @@ const Product = () => {
     };
 
     checkMobile();
-    window.addEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
 
-    return () => window.removeEventListener('resize', checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   return (
@@ -52,13 +69,24 @@ const Product = () => {
                 HelpDude
               </h1>
               <p className="text-lg text-slate-500 mb-8 leading-relaxed">
-                HelpDude is Supporticon's flagship customer support software — purpose-built for SaaS support teams. It gives your engineers unified knowledge search, AI-generated email responses, and automatic escalation routing, so every customer interaction is handled with the speed, accuracy, and care that drives retention and renewal.
+                HelpDude is Supporticon's flagship customer support software,
+                purpose-built for SaaS support teams. It gives your engineers
+                unified knowledge search, AI generated email responses, and
+                automatic escalation routing, so every customer interaction is
+                handled with the speed, accuracy, and care that drives retention
+                and renewal.
               </p>
               <div className="flex flex-wrap gap-4 mb-8">
                 <Button
                   variant="hero"
                   size="lg"
-                  onClick={() => window.open('https://www.freshworks.com/apps/helpdude_1/', '_blank', 'noopener,noreferrer')}
+                  onClick={() =>
+                    window.open(
+                      "https://www.freshworks.com/apps/helpdude_1/",
+                      "_blank",
+                      "noopener,noreferrer",
+                    )
+                  }
                 >
                   Start Your Exclusive Trial
                 </Button>
@@ -66,7 +94,13 @@ const Product = () => {
                   variant="outline"
                   size="lg"
                   className="border-green-200 text-green-700 hover:bg-green-50"
-                  onClick={() => window.open('https://zbooking.in/PoPU8', '_blank', 'noopener,noreferrer')}
+                  onClick={() =>
+                    window.open(
+                      "https://zbooking.in/PoPU8",
+                      "_blank",
+                      "noopener,noreferrer",
+                    )
+                  }
                 >
                   Book Demo
                 </Button>
@@ -74,14 +108,12 @@ const Product = () => {
             </div>
 
             <div className="relative animate-in slide-in-from-right duration-700 delay-300 fill-mode-both">
-              <div
-                className="relative aspect-video rounded-3xl overflow-hidden bg-slate-900 shadow-2xl border border-slate-200/50"
-              >
-                <video 
+              <div className="relative aspect-video rounded-3xl overflow-hidden bg-slate-900 shadow-2xl border border-slate-200/50">
+                <video
                   src={productDemoVideo}
-                  className="w-full h-full object-contain" 
-                  controls 
-                  playsInline 
+                  className="w-full h-full object-contain"
+                  controls
+                  playsInline
                   poster={heroImage}
                   controlsList="nodownload"
                 >
@@ -91,93 +123,352 @@ const Product = () => {
             </div>
           </div>
 
-          {/* New One-line sentence spanning the entire width */}
+          {/* New One line sentence spanning the entire width */}
           <div className="mt-12 w-full bg-white border-2 border-white p-6 rounded-2xl shadow-lg text-center animate-in fade-in slide-in-from-bottom-4 duration-700 delay-500">
             <p className="text-lg md:text-xl text-slate-800 font-semibold md:whitespace-nowrap">
-              Less time searching. Fewer inconsistent answers. Faster resolutions. Customers who trust you enough to stay.
+              Less time searching. Fewer inconsistent answers. Faster
+              resolutions. Customers who trust you enough to stay.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Section 1: Intelligent Email Drafting */}
-      <section className="container mx-auto px-4 py-20 animate-in fade-in duration-700 delay-500 fill-mode-both">
-        <div className="grid items-center gap-12 md:grid-cols-2">
-          <div className="bg-white/70 backdrop-blur-md p-8 md:p-12 rounded-[2.5rem] border border-green-100 shadow-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold uppercase tracking-wider">
-              <Sparkles className="h-3.5 w-3.5" />
-              AI Drafting
+      {/* Marketplace Section */}
+      <section className="container mx-auto px-4 py-16 animate-in fade-in duration-700 delay-500 fill-mode-both">
+        <div className="bg-white p-8 md:p-16 rounded-[2.5rem] border border-slate-100 shadow-xl relative overflow-hidden">
+          {/* Subtle glow background */}
+          <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[80px] pointer-events-none"></div>
+          <div className="absolute bottom-0 right-1/4 w-[200px] h-[200px] bg-emerald-500/5 rounded-full blur-[60px] pointer-events-none"></div>
+
+          <div className="relative z-10">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-100 bg-blue-50/50 text-blue-700 text-xs font-semibold tracking-wider uppercase">
+              <span className="h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse shrink-0"></span>
+              Now live on Freshdesk Marketplace
             </div>
-            <h2 className="font-display text-4xl font-bold tracking-tight mb-6 text-slate-900 leading-tight">
-              Intelligent Email Drafting from Tickets
+
+            {/* Heading */}
+            <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tight text-slate-900 leading-tight mt-6 max-w-4xl">
+              Enterprise AI that resolves support tickets{" "}
+              <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent block md:inline">
+                before your team opens them
+              </span>
             </h2>
-            <p className="text-lg text-slate-500 leading-relaxed mb-8">
-              HelpDude's email ticketing software capability goes beyond simple templates, creating a seamless workflow for support engineers.
+
+            {/* Description */}
+            <p className="mt-6 text-lg md:text-xl text-slate-600 leading-relaxed max-w-4xl font-normal">
+              HelpDude's AI engine automatically handles common tickets on
+              Autopilot and empowers agents with AI-drafted replies on Co-Pilot
+              — as a native Freshdesk plugin or a fully standalone platform.
             </p>
-            <ul className="space-y-5">
-              {[
-                "Drafts complete email replies directly from relevant knowledge-base articles",
-                "Generates responses based on the support engineer's own issue description and solution notes",
-                "Automatically finds and assigns the correct POC for every escalation",
-              ].map((item, i) => (
-                <li key={i} className="flex items-start gap-4">
-                  <div className="mt-1.5 flex-shrink-0 w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-green-600">
-                    <Zap className="h-3.5 w-3.5 fill-green-600" />
+
+            {/* Buttons */}
+            <div className="mt-10 flex flex-wrap gap-4 items-center">
+              <Button
+                size="lg"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-6 rounded-xl transition-all duration-300 transform hover:scale-105"
+                onClick={() =>
+                  window.open(
+                    "https://www.freshworks.com/apps/helpdude_1/",
+                    "_blank",
+                    "noopener,noreferrer",
+                  )
+                }
+              >
+                Start free trial
+              </Button>
+
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-slate-200 bg-white hover:bg-slate-50 text-slate-800 font-semibold px-8 py-6 rounded-xl transition-all duration-300 transform hover:scale-105"
+                onClick={() => setOpen(true)}
+              >
+                Request a demo
+              </Button>
+
+              <Button
+                size="lg"
+                className="bg-[#1C734D] hover:bg-[#155A3B] text-white font-semibold px-8 py-6 rounded-xl transition-all duration-300 transform hover:scale-105"
+                onClick={() =>
+                  window.open(
+                    "https://www.freshworks.com/apps/helpdude_1/",
+                    "_blank",
+                    "noopener,noreferrer",
+                  )
+                }
+              >
+                Install on Freshdesk
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Deployment Options Section */}
+      <section className="container mx-auto px-4 py-16 animate-in fade-in duration-700 delay-500 fill-mode-both">
+        <div className="max-w-5xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <span className="text-sm font-bold tracking-widest text-primary uppercase">
+              Two Deployment Options
+            </span>
+            <h2 className="font-display text-4xl font-bold text-slate-900 mt-2">
+              Choose how HelpDude fits your stack
+            </h2>
+          </div>
+
+          {/* Tabs Navigation */}
+          <div className="flex border-b border-slate-200 justify-center mb-12 gap-8">
+            <button
+              onClick={() => setActiveTab("freshdesk")}
+              className={`pb-4 text-lg font-semibold transition-all relative ${
+                activeTab === "freshdesk"
+                  ? "text-primary"
+                  : "text-slate-500 hover:text-slate-800"
+              }`}
+            >
+              HelpDude for Freshdesk
+              {activeTab === "freshdesk" && (
+                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary"></div>
+              )}
+            </button>
+            <button
+              onClick={() => setActiveTab("standalone")}
+              className={`pb-4 text-lg font-semibold transition-all relative ${
+                activeTab === "standalone"
+                  ? "text-primary"
+                  : "text-slate-500 hover:text-slate-800"
+              }`}
+            >
+              HelpDude standalone platform
+              {activeTab === "standalone" && (
+                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary"></div>
+              )}
+            </button>
+          </div>
+
+          <div className="mt-8">
+            {activeTab === "freshdesk" ? (
+              <div className="bg-white p-8 md:p-12 rounded-[2.5rem] border border-slate-100 shadow-xl animate-in fade-in duration-300">
+                {/* Paragraph */}
+                <p className="text-lg text-slate-700 font-medium mb-12 max-w-4xl leading-relaxed">
+                  A Marketplace plugin that embeds directly into every Freshdesk
+                  ticket view. Zero workflow disruption. Install in 15 minutes —
+                  no IT project required.
+                </p>
+
+                {/* Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8">
+                  {[
+                    {
+                      icon: Search,
+                      title: "Unified knowledge search",
+                      desc: "AI searches KB articles, internal docs, and past resolutions simultaneously across all sources in under 30 seconds.",
+                    },
+                    {
+                      icon: Sparkles,
+                      title: "One click AI drafting",
+                      desc: "Three complete, context-grounded email replies generated per ticket. Agent selects, optionally refines, then sends.",
+                    },
+                    {
+                      icon: Sliders,
+                      title: "Response customisation",
+                      desc: "Adjust tone, language, length, and regional context in one click. LLM regenerates the reply in real time.",
+                    },
+                    {
+                      icon: Route,
+                      title: "Intelligent POC routing",
+                      desc: "AI identifies the correct Dev or QA escalation contact automatically from ticket context — no manual org-chart lookup.",
+                    },
+                    {
+                      icon: Lock,
+                      title: "SME admin console",
+                      desc: "Central control for knowledge sources, escalation ownership, and role based permissions across all agents.",
+                    },
+                    {
+                      icon: FileText,
+                      title: "Analytics dashboard",
+                      desc: "Resolution rates, Autopilot accuracy, knowledge gap reports, and agent performance — all in one view.",
+                    },
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex flex-col">
+                      <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-4 text-blue-600 shrink-0">
+                        <item.icon className="h-5 w-5" />
+                      </div>
+                      <h4 className="text-base font-bold text-slate-900 mb-2 leading-snug">
+                        {item.title}
+                      </h4>
+                      <p className="text-sm text-slate-500 leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className="bg-white p-8 md:p-12 rounded-[2.5rem] border border-slate-100 shadow-xl animate-in fade-in duration-300">
+                {/* Paragraph */}
+                <p className="text-lg text-slate-700 font-medium mb-12 max-w-4xl leading-relaxed">
+                  A complete, standalone email ticketing platform. No Freshdesk
+                  needed. Inbound emails become tickets. Autopilot resolves what
+                  it can. Co Pilot handles everything else.
+                </p>
+
+                {/* 2 Column Autopilot / Co-Pilot Section */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                  {/* Left Column: Autopilot */}
+                  <div className="flex flex-col">
+                    <div className="bg-blue-50/50 p-4 rounded-2xl flex items-center gap-4 mb-6 border border-blue-100/50">
+                      <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+                        <Zap className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-bold text-slate-900 leading-tight">
+                          Autopilot mode
+                        </h4>
+                        <p className="text-sm text-blue-600 font-semibold uppercase tracking-wider mt-0.5">
+                          Zero touch resolution
+                        </p>
+                      </div>
+                    </div>
+
+                    <p className="text-slate-600 mb-8 leading-relaxed">
+                      Inbound email arrives, AI searches your knowledge base,
+                      and — if confidence exceeds the threshold — sends a
+                      complete, professional reply to the customer
+                      automatically. No agent required.
+                    </p>
+
+                    <ol className="space-y-4">
+                      {[
+                        "Email arrives at HelpDude support inbox",
+                        "AI embeds and vector searches knowledge base",
+                        "Match above 60% confidence threshold",
+                        "LLM generates reply — SES dispatches to customer",
+                        "Response, match score, and metadata logged",
+                      ].map((step, idx) => (
+                        <li key={idx} className="flex items-start gap-4">
+                          <div className="w-6 h-6 rounded bg-blue-100 text-blue-700 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                            {idx + 1}
+                          </div>
+                          <p className="text-slate-700 font-medium">{step}</p>
+                        </li>
+                      ))}
+                    </ol>
                   </div>
-                  <p className="text-slate-600 text-lg font-medium leading-relaxed">{item}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="relative bg-white p-3 md:p-6 rounded-3xl border border-slate-100 shadow-2xl">
-            <ImageZoom
-              src={supporticonUploads.image3}
-              alt="HelpDude AI Drafting Interface"
-            />
-          </div>
-        </div>
-      </section>
 
-      {/* Section 2: SME Admin Console */}
-      <section className="container mx-auto px-4 py-20 animate-in fade-in duration-700 delay-700 fill-mode-both">
-        <div className="grid items-center gap-12 md:grid-cols-2">
-          <div className="md:order-last bg-white/70 backdrop-blur-md p-8 md:p-12 rounded-[2.5rem] border border-green-100 shadow-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full bg-green-100 text-green-700 text-xs font-bold uppercase tracking-wider">
-              <Sliders className="h-3.5 w-3.5" />
-              Admin Control
-            </div>
-            <h2 className="font-display text-4xl font-bold tracking-tight mb-6 text-slate-900 leading-tight">
-              SME Admin Console
-            </h2>
-            <p className="text-lg text-slate-500 leading-relaxed mb-10">
-              The SME Admin Console is the control centre for your helpdesk ticketing system. All configuration — articles, POCs, and AI workflows — is managed here by your team leads or admins.
-            </p>
-            <ul className="space-y-6">
-              {[
-                "Configure knowledge sources: KB articles, internal docs, and knowledge-transfer content",
-                "Define Dev and QA POC ownership for clean, accountable escalation paths",
-                "Control access with role-based permissions — keep the right people in the right seats"
-              ].map((item, i) => (
-                <li key={i} className="flex items-start">
-                  <p className="text-slate-600 text-lg leading-relaxed">
-                    • {item}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="relative bg-white p-3 md:p-6 rounded-3xl border border-slate-100 shadow-2xl">
-            <ImageZoom
-              src={supporticonUploads.image1}
-              alt="SME Admin Console Dashboard"
-            />
+                  {/* Right Column: Co-Pilot */}
+                  <div className="flex flex-col">
+                    <div className="bg-emerald-50/50 p-4 rounded-2xl flex items-center gap-4 mb-6 border border-emerald-100/50">
+                      <div className="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600 shrink-0">
+                        <Users className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-bold text-slate-900 leading-tight">
+                          Co Pilot mode
+                        </h4>
+                        <p className="text-sm text-emerald-600 font-semibold uppercase tracking-wider mt-0.5">
+                          Human in the loop
+                        </p>
+                      </div>
+                    </div>
+
+                    <p className="text-slate-600 mb-8 leading-relaxed">
+                      Complex tickets route to agents with three AI drafted
+                      reply options ready. Agent selects, refines in one click,
+                      and sends — a 15 minute task completed in under 2 minutes.
+                    </p>
+
+                    <ul className="space-y-4">
+                      {[
+                        {
+                          letter: "A",
+                          text: "Agent opens ticket, clicks HelpDude button",
+                        },
+                        {
+                          letter: "B",
+                          text: "AI surfaces top 3 drafts from full knowledge base",
+                        },
+                        {
+                          letter: "C",
+                          text: "Agent selects draft, refines tone/language/length",
+                        },
+                        {
+                          letter: "D",
+                          text: "Or: types solution, AI formats professionally",
+                        },
+                        {
+                          letter: "E",
+                          text: "Or: escalates — AI auto routes to Dev/QA POC",
+                        },
+                      ].map((step, idx) => (
+                        <li key={idx} className="flex items-start gap-4">
+                          <div className="w-6 h-6 rounded bg-emerald-100 text-emerald-700 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                            {step.letter}
+                          </div>
+                          <p className="text-slate-700 font-medium">
+                            {step.text}
+                          </p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Subtitle */}
+                <div className="border-t border-slate-100 pt-12 mb-8">
+                  <h4 className="text-xl font-bold text-slate-900">
+                    Standalone feature set
+                  </h4>
+                </div>
+
+                {/* 4 Column Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                  {[
+                    {
+                      icon: Mail,
+                      title: "Email to ticket ingestion",
+                      desc: "Inbound emails parsed via AWS SES, converted to tickets with full metadata extraction automatically.",
+                    },
+                    {
+                      icon: Zap,
+                      title: "Autopilot resolution",
+                      desc: "Common tickets resolved 24/7 without agent involvement. Configurable confidence threshold.",
+                    },
+                    {
+                      icon: BookOpen,
+                      title: "Self improving knowledge base",
+                      desc: "SME validated resolutions automatically promoted into the article pool — AI accuracy compounds over time.",
+                    },
+                    {
+                      icon: BarChart,
+                      title: "Analytics & reporting",
+                      desc: "Autopilot success rate, knowledge gap reports, SLA tracking, and agent performance metrics.",
+                    },
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex flex-col">
+                      <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-4 text-blue-600 shrink-0">
+                        <item.icon className="h-5 w-5" />
+                      </div>
+                      <h4 className="text-base font-bold text-slate-900 mb-2 leading-snug">
+                        {item.title}
+                      </h4>
+                      <p className="text-sm text-slate-500 leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
 
       {/* Section 3: Integrations */}
       <section className="container mx-auto px-4 py-20 animate-in fade-in duration-700 delay-1000 fill-mode-both">
-        <div className="bg-white/70 backdrop-blur-md p-8 md:p-16 rounded-2xl border border-green-100 shadow-xl max-w-5xl mx-auto">
+        <div className="bg-white p-8 md:p-16 rounded-2xl border border-green-100 shadow-xl max-w-5xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full bg-[#1A7FB515] text-[#1A7FB5] text-xs font-bold uppercase tracking-wider">
             <Plug className="h-3.5 w-3.5" />
             Integrations
@@ -186,13 +477,14 @@ const Product = () => {
             Customer Support Software That Works Inside Your Existing Stack
           </h2>
           <p className="text-lg text-slate-500 leading-relaxed mb-8">
-            HelpDude connects natively with the customer service ticketing system platforms your team already relies on:
+            HelpDude connects natively with the customer service ticketing
+            system platforms your team already relies on:
           </p>
           <ul className="space-y-4 mb-8">
             {[
-              "Freshdesk — Full native integration, live now in the Freshdesk Marketplace",
-              "Zoho Desk — Integration coming soon",
-              "Zendesk — Integration coming soon"
+              "Freshdesk, Full native integration, live now in the Freshdesk Marketplace",
+              "Zoho Desk, Integration coming soon",
+              "Zendesk, Integration coming soon",
             ].map((item, i) => (
               <li key={i} className="flex items-start">
                 <p className="text-slate-700 text-lg leading-relaxed font-medium">
@@ -202,84 +494,86 @@ const Product = () => {
             ))}
           </ul>
           <p className="text-lg text-slate-500 leading-relaxed">
-            Whether you're a growing SaaS business using the best ticketing system for small business or a scaling enterprise managing thousands of tickets daily — HelpDude plugs-in under minutes, not months. Your customers start experiencing the difference the same week you deploy.
+            Whether you're a growing SaaS business using the best ticketing
+            system for small business or a scaling enterprise managing thousands
+            of tickets daily, HelpDude plugs-in under minutes, not months. Your
+            customers start experiencing the difference the same week you
+            deploy.
           </p>
         </div>
       </section>
 
-      {/* Section 4: FAQ */}
+      {/* Section 4: Final CTA */}
       <section className="container mx-auto px-4 py-20 animate-in fade-in duration-700 delay-1000 fill-mode-both">
         <div className="max-w-6xl mx-auto">
-
-          {/* FAQ Accordion */}
-          <div className="mb-10">
-            <h3 className="font-display text-3xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h3>
-            <div className="space-y-3">
-              {[
-                {
-                  q: "What makes HelpDude different from other customer support software?",
-                  a: "Most customer support software manages the workflow around a ticket. HelpDude works inside the ticket — surfacing the right knowledge under 30 seconds with citation without switching tabs, drafting the right response, and routing the right escalation automatically."
-                },
-                {
-                  q: "Does HelpDude replace our existing Freshdesk ticketing system?",
-                  a: "No. HelpDude works inside your existing support ticket system — starting with native Freshdesk integration. It adds an AI intelligence layer on top of the tools your team already uses. No migration, no disruption."
-                },
-                {
-                  q: "How does the one-click email drafting work in practice?",
-                  a: "When an agent opens a ticket in Freshdesk, HelpDude reads the ticket content, searches the knowledge base for the most relevant articles, and drafts a complete reply. The agent reviews, personalises if needed, and sends. Seconds instead of minutes."
-                },
-                {
-                  q: "Is HelpDude suitable for small business teams?",
-                  a: "Yes. HelpDude scales from small SaaS teams handling 20–50 tickets per day to enterprise operations managing thousands. The SME Admin Console is self-service — no IT department required."
-                },
-                {
-                  q: "What data security standards does HelpDude meet?",
-                  a: "All customer data is stored exclusively on AWS and MongoDB Atlas. No third-party access or data sharing. Role-based permissions ensure only authorised team members access specific customer data."
-                },
-                {
-                  q: "How does intelligent POC routing improve the customer experience?",
-                  a: "HelpDude automatically identifies the correct Dev or QA point-of-contact based on ticket content — eliminating manual routing through Slack or org charts. Complex issues reach the right expert immediately, not after multiple handoffs."
-                },
-              ].map((faq, i) => (
-                <details key={i} className="group bg-white/70 backdrop-blur-md rounded-2xl border border-green-100 shadow-md overflow-hidden">
-                  <summary className="flex items-center justify-between p-5 md:p-6 cursor-pointer list-none hover:bg-green-50/40 transition-colors">
-                    <span className="font-bold text-slate-900 text-base pr-8">{faq.q}</span>
-                    <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#1A7FB5]/10 text-[#1A7FB5] flex items-center justify-center font-bold text-lg transition-transform duration-300 group-open:rotate-45">+</span>
-                  </summary>
-                  <div className="px-5 md:px-6 pb-5 md:pb-6 pt-0">
-                    <p className="text-slate-600 leading-relaxed border-t border-slate-100 pt-4">{faq.a}</p>
-                  </div>
-                </details>
-              ))}
-            </div>
-          </div>
-
-
           {/* Final CTA */}
+          <div className="bg-white rounded-[3rem] p-8 md:p-16 border border-slate-100 text-center shadow-xl relative overflow-hidden">
+            {/* Subtle glow background */}
+            <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[80px] pointer-events-none"></div>
 
-          <div className="mt-16 bg-gradient-to-br from-green-50 to-blue-50 backdrop-blur-md rounded-[3rem] p-8 md:p-16 border border-green-100 text-center shadow-xl">
-            <h3 className="font-display text-4xl font-bold text-slate-900 mb-6">
-              Setup in 15 Minutes. Customer Outcomes from Day One.
-            </h3>
-            <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto mb-10">
-              Sign up, connect Freshdesk, and see your first customer intelligence insight in under 15 minutes. No implementation project. No IT dependency. Your customers start experiencing the difference the same week you deploy.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button 
-                size="lg" 
-                variant="hero"
-                className="px-10 py-7 rounded-full font-bold text-lg shadow-xl relative z-10 transition-all hover:scale-105"
-                onClick={() => window.open('https://www.freshworks.com/apps/helpdude_1/', '_blank', 'noopener,noreferrer')}
-              >
-                Start Your Exclusive Trial
-              </Button>
+            <div className="relative z-10">
+              <span className="text-sm font-bold tracking-widest text-primary uppercase block mb-3">
+                Get started today
+              </span>
+              <h3 className="font-display text-4xl font-bold text-slate-900 mb-6 leading-tight max-w-4xl mx-auto">
+                Deploy in 15 minutes. Resolve smarter from day one.
+              </h3>
+              <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto mb-10">
+                Install from the Freshdesk Marketplace or start the standalone
+                platform. See your first AI-handled ticket the same day you sign
+                up.
+              </p>
+
+              <div className="flex flex-wrap justify-center gap-4 items-center">
+                <Button
+                  size="lg"
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-6 rounded-xl transition-all duration-300 transform hover:scale-105"
+                  onClick={() =>
+                    window.open(
+                      "https://www.freshworks.com/apps/helpdude_1/",
+                      "_blank",
+                      "noopener,noreferrer",
+                    )
+                  }
+                >
+                  Start free trial
+                </Button>
+
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-slate-200 bg-white hover:bg-slate-50 text-slate-800 font-semibold px-8 py-6 rounded-xl transition-all duration-300 transform hover:scale-105"
+                  onClick={() => setOpen(true)}
+                >
+                  Request a demo
+                </Button>
+
+                <Button
+                  size="lg"
+                  className="bg-[#1C734D] hover:bg-[#155A3B] text-white font-semibold px-8 py-6 rounded-xl transition-all duration-300 transform hover:scale-105"
+                  onClick={() =>
+                    window.open(
+                      "https://www.freshworks.com/apps/helpdude_1/",
+                      "_blank",
+                      "noopener,noreferrer",
+                    )
+                  }
+                >
+                  Install on Freshdesk
+                </Button>
+              </div>
+
+              <p className="text-sm text-slate-500 mt-8 font-medium">
+                No credit card required &middot; No IT dependency &middot;
+                Cancel anytime
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Video Modal Removed */}
-
+      <RequestDemoDialog open={open} onOpenChange={setOpen} />
     </main>
   );
 };

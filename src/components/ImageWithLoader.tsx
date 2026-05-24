@@ -6,7 +6,13 @@ interface ImageWithLoaderProps extends React.ImgHTMLAttributes<HTMLImageElement>
   className?: string; // applied to the img itself
 }
 
-export default function ImageWithLoader({ className, onLoad, onError, alt, ...imgProps }: ImageWithLoaderProps) {
+export default function ImageWithLoader({
+  className,
+  onLoad,
+  onError,
+  alt,
+  ...imgProps
+}: ImageWithLoaderProps) {
   const [loaded, setLoaded] = useState(false);
 
   const handleLoad: React.ReactEventHandler<HTMLImageElement> = (e) => {
@@ -25,7 +31,11 @@ export default function ImageWithLoader({ className, onLoad, onError, alt, ...im
         <div className="absolute inset-0 z-10 flex items-center justify-center bg-background/60 animate-fade-in">
           <div className="flex flex-col items-center gap-4">
             <div className="relative h-16 w-16 rounded-full bg-background shadow-lg flex items-center justify-center">
-              <img src={assetUrl("/favicon.ico")} alt="Help Dude logo" className="h-8 w-8" />
+              <img
+                src={assetUrl("/favicon.ico")}
+                alt="Help Dude logo"
+                className="h-8 w-8"
+              />
               <div className="pointer-events-none absolute inset-0 rounded-full border-2 border-primary/30" />
               <div className="pointer-events-none absolute inset-0 rounded-full border-t-2 border-primary animate-[spin_1.2s_linear_infinite]" />
             </div>
@@ -46,7 +56,7 @@ export default function ImageWithLoader({ className, onLoad, onError, alt, ...im
         className={cn(
           "transition-opacity duration-500",
           loaded ? "opacity-100" : "opacity-0",
-          className
+          className,
         )}
       />
     </>

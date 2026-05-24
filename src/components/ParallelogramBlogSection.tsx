@@ -20,7 +20,7 @@ interface ParallelogramBlogSectionProps {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Single card with strict alternating parallelogram + zig-zag image position
+// Single card with strict alternating parallelogram + zig zag image position
 // ─────────────────────────────────────────────────────────────────────────────
 const ParallelogramCard: React.FC<{ article: Article; index: number }> = ({
   article,
@@ -33,8 +33,8 @@ const ParallelogramCard: React.FC<{ article: Article; index: number }> = ({
   // even index (0, 2, 4…) → image LEFT,  content RIGHT, skewX(-10deg)
   // odd  index (1, 3, 5…) → image RIGHT, content LEFT,  skewX(+10deg)
   const isEven = index % 2 === 0;
-  const outerSkew = isEven ? -10 : 10;    // parallelogram direction
-  const innerSkew = isEven ? 10 : -10;    // reverse → content stays straight
+  const outerSkew = isEven ? -10 : 10; // parallelogram direction
+  const innerSkew = isEven ? 10 : -10; // reverse → content stays straight
 
   return (
     <motion.div
@@ -50,11 +50,18 @@ const ParallelogramCard: React.FC<{ article: Article; index: number }> = ({
       {/* ── Outer parallelogram shell ── */}
       <div
         className="overflow-hidden rounded-2xl shadow-xl border border-green-100 bg-white/80 backdrop-blur-md hover:shadow-2xl hover:border-green-300 transition-shadow duration-300"
-        style={{ transform: `skewX(${outerSkew}deg)`, transformOrigin: "center" }}
+        style={{
+          transform: `skewX(${outerSkew}deg)`,
+          transformOrigin: "center",
+        }}
       >
         {/* ── Counter-skew so content is always upright ── */}
-        <div style={{ transform: `skewX(${innerSkew}deg)`, transformOrigin: "center" }}>
-
+        <div
+          style={{
+            transform: `skewX(${innerSkew}deg)`,
+            transformOrigin: "center",
+          }}
+        >
           {/* ── Row: even → row (image L), odd → row-reverse (image R) ── */}
           <div
             className={`flex flex-col items-stretch ${
@@ -111,7 +118,6 @@ const ParallelogramCard: React.FC<{ article: Article; index: number }> = ({
               </Link>
             </div>
           </div>
-
         </div>
       </div>
     </motion.div>

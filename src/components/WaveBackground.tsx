@@ -1,50 +1,54 @@
+/**
+ * Minimal ambient background — soft radial glows that add depth
+ * without competing with content. Keeps the premium "breathing" feel.
+ */
 export const WaveBackground = () => {
   return (
-    <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-[#F2FAF2]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(168,217,127,0.28),transparent_32%),linear-gradient(180deg,#ffffff_0%,#f2faf2_52%,#ffffff_100%)]" />
+    <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-white">
+      {/* Top-right warm glow */}
+      <div
+        className="absolute -top-32 -right-32 w-[700px] h-[700px] rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(209,250,229,0.55) 0%, rgba(167,243,208,0.25) 45%, transparent 70%)",
+          animation: "wave-breathe 20s ease-in-out infinite",
+        }}
+      />
 
-      <div className="absolute -left-[18%] top-[10%] h-[42vh] w-[138%] rounded-[50%] bg-[#E8F5D8]/70 blur-3xl animate-wave-breathe" />
+      {/* Top-left cool blue tint */}
+      <div
+        className="absolute -top-24 -left-24 w-[500px] h-[500px] rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(186,230,255,0.4) 0%, rgba(147,197,253,0.15) 50%, transparent 70%)",
+          animation: "wave-float-1 28s ease-in-out infinite",
+        }}
+      />
 
-      <svg
-        className="absolute -left-[10%] top-[18%] h-[34vh] w-[120%] animate-wave-float-1"
-        viewBox="0 0 1440 320"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        <path
-          fill="#C8E6A0"
-          fillOpacity="0.55"
-          d="M0,192L80,176C160,160,320,128,480,144C640,160,800,224,960,229.3C1120,235,1280,181,1360,154.7L1440,128L1440,320L0,320Z"
-        />
-      </svg>
+      {/* Mid-page center subtle warmth */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full"
+        style={{
+          background:
+            "radial-gradient(ellipse, rgba(240,253,244,0.45) 0%, transparent 65%)",
+          animation: "wave-float-2 35s ease-in-out infinite",
+        }}
+      />
 
-      <svg
-        className="absolute -right-[10%] top-[42%] h-[38vh] w-[124%] animate-wave-float-2"
-        viewBox="0 0 1440 320"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        <path
-          fill="#A8D97F"
-          fillOpacity="0.28"
-          d="M0,224L80,213.3C160,203,320,181,480,160C640,139,800,117,960,133.3C1120,149,1280,203,1360,229.3L1440,256L1440,320L0,320Z"
-        />
-      </svg>
+      {/* Bottom-left green accent */}
+      <div
+        className="absolute -bottom-40 -left-20 w-[600px] h-[600px] rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(187,247,208,0.35) 0%, transparent 65%)",
+          animation: "wave-breathe 24s ease-in-out infinite reverse",
+        }}
+      />
 
-      <svg
-        className="absolute -left-[8%] bottom-[-4%] h-[30vh] w-[116%] animate-wave-drift"
-        viewBox="0 0 1440 320"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        <path
-          fill="#DDF0C9"
-          fillOpacity="0.62"
-          d="M0,160L80,170.7C160,181,320,203,480,192C640,181,800,139,960,122.7C1120,107,1280,117,1360,122.7L1440,128L1440,320L0,320Z"
-        />
-      </svg>
-
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_48%,rgba(255,255,255,0.72)_100%)]" />
+      {/* Soft vignette to keep edges clean */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/30" />
     </div>
   );
 };
+
+export default WaveBackground;

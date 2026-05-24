@@ -9,13 +9,19 @@ interface SEOProps {
   jsonLd?: Record<string, any>;
 }
 
-export const SEO = ({ title, description, canonicalPath, image, jsonLd }: SEOProps) => {
+export const SEO = ({
+  title,
+  description,
+  canonicalPath,
+  image,
+  jsonLd,
+}: SEOProps) => {
   const origin = typeof window !== "undefined" ? window.location.origin : "";
   const canonicalUrl = canonicalPath
     ? new URL(canonicalPath, origin).toString()
     : typeof window !== "undefined"
-    ? window.location.href
-    : "";
+      ? window.location.href
+      : "";
   const imageUrl = image ? absoluteAssetUrl(image) : undefined;
 
   return (
@@ -33,9 +39,7 @@ export const SEO = ({ title, description, canonicalPath, image, jsonLd }: SEOPro
       {imageUrl && <meta name="twitter:image" content={imageUrl} />}
 
       {jsonLd && (
-        <script type="application/ld+json">
-          {JSON.stringify(jsonLd)}
-        </script>
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       )}
     </Helmet>
   );

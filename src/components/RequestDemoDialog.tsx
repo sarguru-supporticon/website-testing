@@ -1,4 +1,10 @@
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -17,7 +23,10 @@ type FormValues = {
   email: string;
 };
 
-const RequestDemoDialog: React.FC<RequestDemoDialogProps> = ({ open, onOpenChange }) => {
+const RequestDemoDialog: React.FC<RequestDemoDialogProps> = ({
+  open,
+  onOpenChange,
+}) => {
   const { register, handleSubmit, reset } = useForm<FormValues>({
     defaultValues: { name: "", phone: "", email: "" },
   });
@@ -33,7 +42,9 @@ const RequestDemoDialog: React.FC<RequestDemoDialogProps> = ({ open, onOpenChang
       onOpenChange(false);
       reset();
     } catch (e) {
-      toast.error("Could not open email client. Please email founder@supporticon.com");
+      toast.error(
+        "Could not open email client. Please email founder@supporticon.com",
+      );
     }
   };
 
@@ -50,19 +61,40 @@ const RequestDemoDialog: React.FC<RequestDemoDialogProps> = ({ open, onOpenChang
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="name">Full name</Label>
-            <Input id="name" placeholder="Jane Doe" required {...register("name")} />
+            <Input
+              id="name"
+              placeholder="Jane Doe"
+              required
+              {...register("name")}
+            />
           </div>
           <div className="space-y-2">
             <Label htmlFor="phone">Phone number</Label>
-            <Input id="phone" type="tel" placeholder="+1 555 123 4567" required {...register("phone")} />
+            <Input
+              id="phone"
+              type="tel"
+              placeholder="+1 555 123 4567"
+              required
+              {...register("phone")}
+            />
           </div>
           <div className="space-y-2">
             <Label htmlFor="email">Work email</Label>
-            <Input id="email" type="email" placeholder="you@company.com" required {...register("email")} />
+            <Input
+              id="email"
+              type="email"
+              placeholder="you@company.com"
+              required
+              {...register("email")}
+            />
           </div>
 
           <div className="flex justify-end gap-2 pt-2">
-            <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => onOpenChange(false)}
+            >
               Cancel
             </Button>
             <Button type="submit" variant="hero">

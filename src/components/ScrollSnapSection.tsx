@@ -14,7 +14,10 @@ interface ScrollSnapSectionProps {
 
 const ANIMATION_DURATION = 0.55;
 
-const ScrollSnapSection: React.FC<ScrollSnapSectionProps> = ({ articles, leftPanel }) => {
+const ScrollSnapSection: React.FC<ScrollSnapSectionProps> = ({
+  articles,
+  leftPanel,
+}) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -37,7 +40,7 @@ const ScrollSnapSection: React.FC<ScrollSnapSectionProps> = ({ articles, leftPan
       {
         root: containerRef.current,
         threshold: 0.6,
-      }
+      },
     );
     sectionRefs.current.forEach((ref) => {
       if (ref) observer.observe(ref);
@@ -72,10 +75,15 @@ const ScrollSnapSection: React.FC<ScrollSnapSectionProps> = ({ articles, leftPan
             initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.97 }}
-            transition={{ duration: ANIMATION_DURATION, ease: [0.4, 0, 0.2, 1] }}
+            transition={{
+              duration: ANIMATION_DURATION,
+              ease: [0.4, 0, 0.2, 1],
+            }}
             className="w-full flex items-center justify-center"
           >
-            {leftPanel ? leftPanel : (
+            {leftPanel ? (
+              leftPanel
+            ) : (
               <div className="w-3/4 h-2/3 bg-gray-200 rounded-2xl shadow-xl flex items-center justify-center text-3xl font-bold text-gray-400 select-none">
                 Panel {activeIndex + 1}
               </div>
@@ -92,7 +100,7 @@ const ScrollSnapSection: React.FC<ScrollSnapSectionProps> = ({ articles, leftPan
         {articles.map((article, idx) => (
           <div
             key={article.id}
-            ref={el => (sectionRefs.current[idx] = el)}
+            ref={(el) => (sectionRefs.current[idx] = el)}
             data-index={idx}
             className="h-screen w-full flex items-center justify-center snap-start"
             style={{ scrollSnapAlign: "start" }}
@@ -116,12 +124,19 @@ const ScrollSnapSection: React.FC<ScrollSnapSectionProps> = ({ articles, leftPan
                     y: direction === "down" ? -40 : 40,
                     scale: 0.97,
                   }}
-                  transition={{ duration: ANIMATION_DURATION, ease: [0.4, 0, 0.2, 1] }}
+                  transition={{
+                    duration: ANIMATION_DURATION,
+                    ease: [0.4, 0, 0.2, 1],
+                  }}
                   className="w-full max-w-2xl mx-auto bg-gray-50 rounded-2xl shadow-lg p-12 flex flex-col items-center justify-center"
                 >
                   <div className="text-2xl font-bold mb-4">{article.title}</div>
-                  <div className="text-gray-500 text-lg mb-2">{article.description}</div>
-                  <div className="mt-8 text-sm text-gray-400">Article {idx + 1} of {articles.length}</div>
+                  <div className="text-gray-500 text-lg mb-2">
+                    {article.description}
+                  </div>
+                  <div className="mt-8 text-sm text-gray-400">
+                    Article {idx + 1} of {articles.length}
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>

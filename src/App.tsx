@@ -32,7 +32,11 @@ import supporticonLogoIcon from "@/assets/supporticon_logo.png";
 
 const queryClient = new QueryClient();
 
-const Preloader = ({ onLoadingComplete }: { onLoadingComplete: () => void }) => {
+const Preloader = ({
+  onLoadingComplete,
+}: {
+  onLoadingComplete: () => void;
+}) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       onLoadingComplete();
@@ -73,7 +77,11 @@ const Preloader = ({ onLoadingComplete }: { onLoadingComplete: () => void }) => 
           animate={{ scale: [0.9, 1.1, 0.9], opacity: [0.8, 1, 0.8] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <img src={supporticonLogoIcon} alt="Loading Icon" className="w-full h-full object-contain drop-shadow-md" />
+          <img
+            src={supporticonLogoIcon}
+            alt="Loading Icon"
+            className="w-full h-full object-contain drop-shadow-md"
+          />
         </motion.div>
       </div>
 
@@ -100,14 +108,18 @@ function App() {
           <Sonner />
 
           <AnimatePresence>
-            {isLoading && <Preloader onLoadingComplete={() => setIsLoading(false)} />}
+            {isLoading && (
+              <Preloader onLoadingComplete={() => setIsLoading(false)} />
+            )}
           </AnimatePresence>
 
           <BrowserRouter
             basename={import.meta.env.BASE_URL.replace(/\/$/, "") || undefined}
           >
             <ScrollToTop />
-            <div className={`relative min-h-screen ${isLoading ? 'h-screen overflow-hidden' : ''}`}>
+            <div
+              className={`relative min-h-screen ${isLoading ? "h-screen overflow-hidden" : ""}`}
+            >
               <WaveBackground />
               <SiteHeader />
               <Marquee />
@@ -122,7 +134,10 @@ function App() {
                 <Route path="/events" element={<Events />} />
                 <Route path="/sources" element={<EBooks />} />
                 <Route path="/resources/:slug" element={<ResourceDetail />} />
-                <Route path="/resources/case-study/:slug" element={<CaseStudyDetail />} />
+                <Route
+                  path="/resources/case-study/:slug"
+                  element={<CaseStudyDetail />}
+                />
                 <Route path="/privacy-policy" element={<Privacy />} />
                 <Route path="/terms" element={<Terms />} />
                 <Route path="/legal" element={<Legal />} />

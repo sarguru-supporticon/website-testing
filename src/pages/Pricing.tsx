@@ -1,5 +1,14 @@
 import { SEO } from "@/components/SEO";
-import { Mail, CheckCircle2, ArrowRight, Zap, Shield, HeadphonesIcon, RefreshCw, Star } from "lucide-react";
+import {
+  Mail,
+  CheckCircle2,
+  ArrowRight,
+  Zap,
+  Shield,
+  HeadphonesIcon,
+  RefreshCw,
+  Star,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 import { DotLottiePlayer } from "@dotlottie/react-player";
@@ -7,17 +16,17 @@ import walletAnimation from "@/assets/wallet-animation.lottie";
 
 const features = [
   { icon: Zap, text: "Instant ticket creation & assignment" },
-  { icon: Shield, text: "Priority-based routing & SLA tracking" },
+  { icon: Shield, text: "Priority based routing & SLA tracking" },
   { icon: HeadphonesIcon, text: "Omnichannel support (email, chat, web)" },
-  { icon: RefreshCw, text: "Auto-escalation & resolution workflows" },
-  { icon: CheckCircle2, text: "Real-time analytics & reporting" },
+  { icon: RefreshCw, text: "Auto escalation & resolution workflows" },
+  { icon: CheckCircle2, text: "Real time analytics & reporting" },
   { icon: Star, text: "Dedicated account support" },
 ];
 
 const faqs = [
   {
     q: "What counts as one ticket?",
-    a: "A ticket is any support request created by a customer or agent — regardless of channel (email, chat, portal). Each unique case is billed as one ticket.",
+    a: "A ticket is any support request created by a customer or agent, regardless of channel (email, chat, portal). Each unique case is billed as one ticket.",
   },
   {
     q: "Do unused tickets roll over?",
@@ -25,7 +34,7 @@ const faqs = [
   },
   {
     q: "Is there a minimum purchase?",
-    a: "No minimum. Start with as few tickets as you need. Scale up anytime — additional packs are available at the same rate.",
+    a: "No minimum. Start with as few tickets as you need. Scale up anytime, additional packs are available at the same rate.",
   },
   {
     q: "What payment methods do you accept?",
@@ -39,8 +48,8 @@ const Pricing = () => {
   return (
     <main className="min-h-screen bg-transparent">
       <SEO
-        title="Pricing — SupportIcon"
-        description="Simple, transparent pricing. Pay only for what you use — 1 ticket = $10. No hidden fees."
+        title="Pricing, SupportIcon"
+        description="Simple, transparent pricing. Pay only for what you use, 1 ticket = $10. No hidden fees."
         canonicalPath="/pricing"
       />
 
@@ -56,7 +65,8 @@ const Pricing = () => {
               Pay only for what&nbsp;
               <span
                 style={{
-                  background: "linear-gradient(135deg, #16a34a 0%, #15803d 50%, #065f46 100%)",
+                  background:
+                    "linear-gradient(135deg, #16a34a 0%, #15803d 50%, #065f46 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -66,8 +76,9 @@ const Pricing = () => {
               </span>
             </h1>
             <p className="text-lg text-slate-500 max-w-xl mx-auto md:mx-0 leading-relaxed">
-              No seats. No tiers. No surprises. Every ticket costs the same — giving your team
-              the freedom to scale support without the billing headaches.
+              No seats. No tiers. No surprises. Every ticket costs the same,
+              giving your team the freedom to scale support without the billing
+              headaches.
             </p>
           </div>
           <div className="flex justify-center md:justify-end">
@@ -89,7 +100,8 @@ const Pricing = () => {
           <div
             className="rounded-[2.5rem] overflow-hidden shadow-2xl shadow-green-900/10"
             style={{
-              background: "linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%)",
+              background:
+                "linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%)",
               border: "1.5px solid rgba(22,163,74,0.2)",
             }}
           >
@@ -97,20 +109,27 @@ const Pricing = () => {
             <div
               className="px-10 pt-10 pb-8 flex flex-col md:flex-row items-center md:items-start gap-8"
               style={{
-                background: "linear-gradient(135deg, rgba(22,163,74,0.12) 0%, rgba(16,185,129,0.08) 100%)",
+                background:
+                  "linear-gradient(135deg, rgba(22,163,74,0.12) 0%, rgba(16,185,129,0.08) 100%)",
                 borderBottom: "1px solid rgba(22,163,74,0.15)",
               }}
             >
               {/* Price display */}
               <div className="flex-1 text-center md:text-left">
                 <p className="text-sm font-semibold text-green-700 uppercase tracking-widest mb-2">
-                  Pay-Per-Ticket
+                  Pay Per Ticket
                 </p>
                 <div className="flex items-end gap-2 justify-center md:justify-start">
-                  <span className="text-7xl font-black text-slate-900 leading-none">$10</span>
+                  <span className="text-7xl font-black text-slate-900 leading-none">
+                    $10
+                  </span>
                   <div className="mb-2 text-left">
-                    <span className="block text-slate-500 text-base font-medium">per</span>
-                    <span className="block text-slate-700 text-xl font-bold leading-tight">ticket</span>
+                    <span className="block text-slate-500 text-base font-medium">
+                      per
+                    </span>
+                    <span className="block text-slate-700 text-xl font-bold leading-tight">
+                      ticket
+                    </span>
                   </div>
                 </div>
                 <p className="mt-3 text-slate-500 text-sm max-w-xs mx-auto md:mx-0">
@@ -122,7 +141,10 @@ const Pricing = () => {
               <div className="flex-shrink-0 flex flex-col items-center justify-center">
                 <div
                   className="relative w-52 h-36 flex flex-col items-center justify-center rounded-2xl shadow-xl overflow-hidden"
-                  style={{ background: "linear-gradient(135deg, #16a34a 0%, #065f46 100%)" }}
+                  style={{
+                    background:
+                      "linear-gradient(135deg, #16a34a 0%, #065f46 100%)",
+                  }}
                 >
                   {/* Envelope body */}
                   <div className="absolute inset-4 rounded-xl border-2 border-white/25 bg-white/10" />
@@ -131,17 +153,31 @@ const Pricing = () => {
                   <svg
                     viewBox="0 0 208 60"
                     className="absolute top-4 left-4 right-4 w-[calc(100%-2rem)]"
-                    style={{ filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.15))" }}
+                    style={{
+                      filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.15))",
+                    }}
                   >
-                    <polygon points="0,0 104,52 208,0" fill="rgba(255,255,255,0.18)" />
-                    <polyline points="0,0 104,52 208,0" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" />
+                    <polygon
+                      points="0,0 104,52 208,0"
+                      fill="rgba(255,255,255,0.18)"
+                    />
+                    <polyline
+                      points="0,0 104,52 208,0"
+                      fill="none"
+                      stroke="rgba(255,255,255,0.35)"
+                      strokeWidth="1.5"
+                    />
                   </svg>
 
                   {/* Mail icon + price */}
                   <div className="relative flex flex-col items-center justify-center gap-1 mt-4">
                     <Mail className="w-7 h-7 text-white/80" />
-                    <p className="text-white text-2xl font-black leading-none">$10</p>
-                    <p className="text-white/60 text-[9px] font-bold uppercase tracking-widest">per ticket</p>
+                    <p className="text-white text-2xl font-black leading-none">
+                      $10
+                    </p>
+                    <p className="text-white/60 text-[9px] font-bold uppercase tracking-widest">
+                      per ticket
+                    </p>
                   </div>
                 </div>
                 <p className="text-xs text-green-700 font-semibold mt-3 tracking-wide">
@@ -164,7 +200,9 @@ const Pricing = () => {
                     <div className="flex-shrink-0 w-8 h-8 rounded-xl bg-green-50 flex items-center justify-center group-hover:bg-green-100 transition-colors">
                       <Icon className="w-4 h-4 text-green-600" />
                     </div>
-                    <span className="text-sm text-slate-700 font-medium leading-snug pt-1">{text}</span>
+                    <span className="text-sm text-slate-700 font-medium leading-snug pt-1">
+                      {text}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -177,7 +215,10 @@ const Pricing = () => {
             >
               <p className="text-sm text-slate-500 text-center sm:text-left">
                 Need a custom volume deal?{" "}
-                <Link to="/contact" className="text-green-600 font-semibold hover:underline">
+                <Link
+                  to="/contact"
+                  className="text-green-600 font-semibold hover:underline"
+                >
                   Talk to sales →
                 </Link>
               </p>
@@ -197,13 +238,15 @@ const Pricing = () => {
 
       {/* ── How it works ── */}
       <section className="px-4 pb-20 max-w-4xl mx-auto">
-        <h2 className="text-2xl font-extrabold text-slate-900 text-center mb-10">How billing works</h2>
+        <h2 className="text-2xl font-extrabold text-slate-900 text-center mb-10">
+          How billing works
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
               step: "01",
               title: "A ticket is opened",
-              desc: "Customer submits a request via any channel — email, chat, or the support portal.",
+              desc: "Customer submits a request via any channel, email, chat, or the support portal.",
             },
             {
               step: "02",
@@ -231,7 +274,9 @@ const Pricing = () => {
               >
                 {step}
               </p>
-              <h3 className="font-bold text-slate-900 text-base mb-2">{title}</h3>
+              <h3 className="font-bold text-slate-900 text-base mb-2">
+                {title}
+              </h3>
               <p className="text-sm text-slate-500 leading-relaxed">{desc}</p>
             </div>
           ))}
@@ -240,7 +285,9 @@ const Pricing = () => {
 
       {/* ── FAQ ── */}
       <section className="px-4 pb-28 max-w-2xl mx-auto">
-        <h2 className="text-2xl font-extrabold text-slate-900 text-center mb-8">Frequently asked questions</h2>
+        <h2 className="text-2xl font-extrabold text-slate-900 text-center mb-8">
+          Frequently asked questions
+        </h2>
         <div className="space-y-4">
           {faqs.map(({ q, a }) => (
             <details
@@ -251,11 +298,18 @@ const Pricing = () => {
                 {q}
                 <span className="ml-4 flex-shrink-0 text-green-500 group-open:rotate-45 transition-transform duration-200">
                   <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                    <path d="M9 3v12M3 9h12" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+                    <path
+                      d="M9 3v12M3 9h12"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                    />
                   </svg>
                 </span>
               </summary>
-              <p className="px-6 pb-5 text-sm text-slate-500 leading-relaxed border-t border-green-50 pt-3">{a}</p>
+              <p className="px-6 pb-5 text-sm text-slate-500 leading-relaxed border-t border-green-50 pt-3">
+                {a}
+              </p>
             </details>
           ))}
         </div>

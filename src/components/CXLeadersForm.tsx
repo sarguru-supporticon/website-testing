@@ -1,13 +1,30 @@
 import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Download, Mail, MessageCircle, Linkedin, CheckCircle } from "lucide-react";
+import {
+  Download,
+  Mail,
+  MessageCircle,
+  Linkedin,
+  CheckCircle,
+} from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
 
 interface CXLeadersFormProps {
   open: boolean;
@@ -25,27 +42,27 @@ interface FormData {
 
 const challenges = [
   "Reducing support costs",
-  "Improving CSAT/NPS", 
+  "Improving CSAT/NPS",
   "Reducing agent attrition",
   "Scaling global teams efficiently",
-  "Other"
+  "Other",
 ];
 
 const roles = [
   "CX Leader",
-  "Vice President", 
+  "Vice President",
   "Director",
   "Manager",
   "Founder",
   "CEO",
   "CTO",
-  "CMO"
+  "CMO",
 ];
 
 const connectMethods = [
   { value: "linkedin", label: "LinkedIn", icon: Linkedin },
   { value: "email", label: "Email", icon: Mail },
-  { value: "whatsapp", label: "WhatsApp", icon: MessageCircle }
+  { value: "whatsapp", label: "WhatsApp", icon: MessageCircle },
 ];
 
 export const CXLeadersForm = ({ open, onOpenChange }: CXLeadersFormProps) => {
@@ -57,21 +74,27 @@ export const CXLeadersForm = ({ open, onOpenChange }: CXLeadersFormProps) => {
     role: "",
     challenge: "",
     challengeOther: "",
-    connectMethod: ""
+    connectMethod: "",
   });
   const { toast } = useToast();
 
   const handleInputChange = (field: keyof FormData, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!formData.fullName || !formData.email || !formData.role || !formData.challenge || !formData.connectMethod) {
+
+    if (
+      !formData.fullName ||
+      !formData.email ||
+      !formData.role ||
+      !formData.challenge ||
+      !formData.connectMethod
+    ) {
       toast({
         title: "Please fill in all required fields",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
@@ -88,17 +111,17 @@ Role: ${formData.role}
 Biggest CX Challenge: ${formData.challenge}${formData.challenge === "Other" && formData.challengeOther ? ` - ${formData.challengeOther}` : ""}
 Preferred Contact Method: ${formData.connectMethod}
 Submitted at: ${new Date().toLocaleString()}
-      `;
+ `;
 
       // Try multiple email services for better reliability
       let emailSent = false;
 
       // Method 1: Try our own PHP script first
       try {
-        const phpResponse = await fetch('/send-email.php', {
-          method: 'POST',
+        const phpResponse = await fetch("/send-email.php", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
             fullName: formData.fullName,
@@ -106,83 +129,89 @@ Submitted at: ${new Date().toLocaleString()}
             role: formData.role,
             challenge: formData.challenge,
             challengeOther: formData.challengeOther,
-            connectMethod: formData.connectMethod
-          })
+            connectMethod: formData.connectMethod,
+          }),
         });
 
         const phpResult = await phpResponse.json();
         if (phpResponse.ok && phpResult.success) {
           emailSent = true;
-          console.log('Email sent via PHP script');
+          console.log("Email sent via PHP script");
         }
       } catch (error) {
-        console.log('PHP script failed:', error);
+        console.log("PHP script failed:", error);
       }
 
       // Method 2: Try Formsubmit.co (free and reliable)
       if (!emailSent) {
-      try {
-        const formSubmitResponse = await fetch('https://formsubmit.co/supp0rtkasupp0rt@gmail.com', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            name: formData.fullName,
-            email: formData.email,
-            subject: `CX Leaders Insight Hub - New Submission from ${formData.fullName}`,
-            message: emailContent,
-            _captcha: 'false',
-            _template: 'table'
-          })
-        });
+        try {
+          const formSubmitResponse = await fetch(
+            "https://formsubmit.co/supp0rtkasupp0rt@gmail.com",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
+              body: JSON.stringify({
+                name: formData.fullName,
+                email: formData.email,
+                subject: `CX Leaders Insight Hub - New Submission from ${formData.fullName}`,
+                message: emailContent,
+                _captcha: "false",
+                _template: "table",
+              }),
+            },
+          );
 
-        if (formSubmitResponse.ok) {
-          emailSent = true;
-          console.log('Email sent via FormSubmit');
+          if (formSubmitResponse.ok) {
+            emailSent = true;
+            console.log("Email sent via FormSubmit");
+          }
+        } catch (error) {
+          console.log("FormSubmit failed:", error);
         }
-      } catch (error) {
-        console.log('FormSubmit failed:', error);
-      }
       }
 
       // Method 3: Try EmailJS as backup
       if (!emailSent) {
         try {
-          const emailjsResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
+          const emailjsResponse = await fetch(
+            "https://api.emailjs.com/api/v1.0/email/send",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                service_id: "default_service",
+                template_id: "template_feedback",
+                user_id: "user_public_key",
+                template_params: {
+                  to_email: "founder@supporticon.com",
+                  from_name: formData.fullName,
+                  from_email: formData.email,
+                  subject: `CX Leaders Insight Hub - ${formData.fullName}`,
+                  message: emailContent,
+                },
+              }),
             },
-            body: JSON.stringify({
-              service_id: 'default_service',
-              template_id: 'template_feedback',
-              user_id: 'user_public_key',
-              template_params: {
-                to_email: 'founder@supporticon.com',
-                from_name: formData.fullName,
-                from_email: formData.email,
-                subject: `CX Leaders Insight Hub - ${formData.fullName}`,
-                message: emailContent
-              }
-            })
-          });
+          );
 
           if (emailjsResponse.ok) {
             emailSent = true;
-            console.log('Email sent via EmailJS');
+            console.log("Email sent via EmailJS");
           }
         } catch (error) {
-          console.log('EmailJS failed:', error);
+          console.log("EmailJS failed:", error);
         }
       }
 
       // Method 4: Fallback to mailto
       if (!emailSent) {
         const mailtoLink = `mailto:supp0rtkasupp0rt@gmail.com?subject=${encodeURIComponent(`CX Leaders Insight Hub - ${formData.fullName}`)}&body=${encodeURIComponent(emailContent)}`;
-        window.open(mailtoLink, '_blank');
-        
+        window.open(mailtoLink, "_blank");
+
         toast({
           title: "Email client opened!",
           description: "Please send the email from your email application.",
@@ -196,13 +225,12 @@ Submitted at: ${new Date().toLocaleString()}
 
       // Always show success screen
       setStep("success");
-      
     } catch (error) {
       console.error("Error sending email:", error);
       toast({
         title: "Something went wrong",
         description: "Please try again or contact us directly.",
-        variant: "destructive"
+        variant: "destructive",
       });
     } finally {
       setIsSubmitting(false);
@@ -211,24 +239,24 @@ Submitted at: ${new Date().toLocaleString()}
 
   const handleDownload = () => {
     try {
-      // Try URL-safe filename first
-      const link = document.createElement('a');
+      // Try URL safe filename first
+      const link = document.createElement("a");
       link.href = "/CX-Leaders-FAQ.pdf";
       link.download = "CX-Leaders-FAQ.pdf";
-      link.target = '_blank';
+      link.target = "_blank";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      
+
       // Show success message
       toast({
         title: "Download started!",
         description: "The FAQ PDF should start downloading now.",
       });
     } catch (error) {
-      console.error('Download failed:', error);
+      console.error("Download failed:", error);
       // Fallback: open in new tab
-      window.open("/CX-Leaders-FAQ.pdf", '_blank');
+      window.open("/CX-Leaders-FAQ.pdf", "_blank");
       toast({
         title: "Opening PDF in new tab",
         description: "You can save the PDF from the new tab.",
@@ -244,7 +272,7 @@ Submitted at: ${new Date().toLocaleString()}
       role: "",
       challenge: "",
       challengeOther: "",
-      connectMethod: ""
+      connectMethod: "",
     });
     onOpenChange(false);
   };
@@ -254,12 +282,25 @@ Submitted at: ${new Date().toLocaleString()}
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         {step === "form" ? (
           <>
-            <DialogHeader className="p-6 rounded-t-lg -m-6 mb-6" style={{background: 'linear-gradient(to right, #1A7FB518, #a855f710)'}}>
+            <DialogHeader
+              className="p-6 rounded-t-lg -m-6 mb-6"
+              style={{
+                background: "linear-gradient(to right, #1A7FB518, #a855f710)",
+              }}
+            >
               <DialogTitle className="text-2xl font-bold bg-brand-gradient bg-clip-text text-transparent font-display">
                 CX Leaders Insight Hub
               </DialogTitle>
               <p className="text-muted-foreground font-sans text-base leading-relaxed mt-3">
-                Thank you for stopping by! We'd love to share how <span className="font-semibold" style={{color: '#1A7FB5'}}>HelpDude</span> is <span className="font-semibold text-purple-600">transforming CX</span> for enterprises like yours. Just quick questions ↓
+                Thank you for stopping by! We'd love to share how{" "}
+                <span className="font-semibold" style={{ color: "#1A7FB5" }}>
+                  HelpDude
+                </span>{" "}
+                is{" "}
+                <span className="font-semibold text-purple-600">
+                  transforming CX
+                </span>{" "}
+                for enterprises like yours. Just quick questions ↓
               </p>
             </DialogHeader>
 
@@ -272,7 +313,9 @@ Submitted at: ${new Date().toLocaleString()}
                 <Input
                   id="fullName"
                   value={formData.fullName}
-                  onChange={(e) => handleInputChange("fullName", e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange("fullName", e.target.value)
+                  }
                   placeholder="Enter your full name"
                   className="w-full"
                 />
@@ -298,7 +341,10 @@ Submitted at: ${new Date().toLocaleString()}
                 <Label className="text-sm font-medium">
                   3. Role <span className="text-red-500">*</span>
                 </Label>
-                <Select value={formData.role} onValueChange={(value) => handleInputChange("role", value)}>
+                <Select
+                  value={formData.role}
+                  onValueChange={(value) => handleInputChange("role", value)}
+                >
                   <SelectTrigger>
                     <SelectValue placeholder="Select your role" />
                   </SelectTrigger>
@@ -315,17 +361,20 @@ Submitted at: ${new Date().toLocaleString()}
               {/* Biggest Challenge */}
               <div className="space-y-3">
                 <Label className="text-sm font-medium">
-                  4. Biggest CX Challenge Today? <span className="text-red-500">*</span>
+                  4. Biggest CX Challenge Today?{" "}
+                  <span className="text-red-500">*</span>
                 </Label>
                 <div className="grid grid-cols-1 gap-2">
                   {challenges.map((challenge) => (
                     <Button
                       key={challenge}
                       type="button"
-                      variant={formData.challenge === challenge ? "default" : "outline"}
+                      variant={
+                        formData.challenge === challenge ? "default" : "outline"
+                      }
                       className={`justify-start h-auto p-3 text-left ${
-                        formData.challenge === challenge 
-                          ? "bg-primary text-primary-foreground" 
+                        formData.challenge === challenge
+                          ? "bg-primary text-primary-foreground"
                           : "hover:bg-muted"
                       }`}
                       onClick={() => handleInputChange("challenge", challenge)}
@@ -334,12 +383,14 @@ Submitted at: ${new Date().toLocaleString()}
                     </Button>
                   ))}
                 </div>
-                
+
                 {formData.challenge === "Other" && (
                   <Textarea
                     placeholder="Please specify your challenge..."
                     value={formData.challengeOther}
-                    onChange={(e) => handleInputChange("challengeOther", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("challengeOther", e.target.value)
+                    }
                     className="mt-2"
                   />
                 )}
@@ -348,7 +399,8 @@ Submitted at: ${new Date().toLocaleString()}
               {/* Connect Method */}
               <div className="space-y-3">
                 <Label className="text-sm font-medium">
-                  5. Best way to connect post-event <span className="text-red-500">*</span>
+                  5. Best way to connect post event{" "}
+                  <span className="text-red-500">*</span>
                 </Label>
                 <div className="grid grid-cols-1 gap-2">
                   {connectMethods.map((method) => {
@@ -357,13 +409,19 @@ Submitted at: ${new Date().toLocaleString()}
                       <Button
                         key={method.value}
                         type="button"
-                        variant={formData.connectMethod === method.value ? "default" : "outline"}
+                        variant={
+                          formData.connectMethod === method.value
+                            ? "default"
+                            : "outline"
+                        }
                         className={`justify-start h-auto p-3 ${
-                          formData.connectMethod === method.value 
-                            ? "bg-primary text-primary-foreground" 
+                          formData.connectMethod === method.value
+                            ? "bg-primary text-primary-foreground"
                             : "hover:bg-muted"
                         }`}
-                        onClick={() => handleInputChange("connectMethod", method.value)}
+                        onClick={() =>
+                          handleInputChange("connectMethod", method.value)
+                        }
                       >
                         <IconComponent className="w-4 h-4 mr-2" />
                         {method.label}
@@ -373,8 +431,8 @@ Submitted at: ${new Date().toLocaleString()}
                 </div>
               </div>
 
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 variant="hero"
                 className="w-full text-white border-none shadow-brand"
                 disabled={isSubmitting}
@@ -388,15 +446,17 @@ Submitted at: ${new Date().toLocaleString()}
             <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
               <CheckCircle className="w-8 h-8 text-green-600" />
             </div>
-            
+
             <div className="space-y-2">
-              <h3 className="text-2xl font-bold text-green-600">Thanks for sharing!</h3>
+              <h3 className="text-2xl font-bold text-green-600">
+                Thanks for sharing!
+              </h3>
               <p className="text-muted-foreground">
-                We'll send you a personalized 1-pager on how HelpDude can solve {
-                  formData.challenge === "Other" && formData.challengeOther 
-                    ? formData.challengeOther.toLowerCase()
-                    : formData.challenge.toLowerCase()
-                }.
+                We'll send you a personalized 1-pager on how HelpDude can solve{" "}
+                {formData.challenge === "Other" && formData.challengeOther
+                  ? formData.challengeOther.toLowerCase()
+                  : formData.challenge.toLowerCase()}
+                .
               </p>
             </div>
 
@@ -404,7 +464,7 @@ Submitted at: ${new Date().toLocaleString()}
               <p className="font-medium mb-4">
                 To get answers for your questions related to HelpDude is here
               </p>
-              <Button 
+              <Button
                 onClick={handleDownload}
                 variant="hero"
                 className="text-white border-none shadow-brand"

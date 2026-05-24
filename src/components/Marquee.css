@@ -4,7 +4,7 @@
   padding: 10px 0;
   display: flex;
   justify-content: center; /* center content horizontally */
-  align-items: center;     /* center content vertically */
+  align-items: center; /* center content vertically */
 }
 
 .marquee {
@@ -27,7 +27,7 @@
 }
 
 .marquee-text strong {
-  color: #6A1B9A;
+  color: #6a1b9a;
   text-shadow: 0 0 8px rgba(106, 27, 154, 0.6);
 }
 
@@ -37,7 +37,9 @@
   object-fit: contain;
   vertical-align: middle;
   opacity: 0.95;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 
 .marquee-icon:hover {

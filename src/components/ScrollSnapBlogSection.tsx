@@ -99,7 +99,7 @@ const ScrollSnapBlogSection: React.FC<ScrollSnapBlogSectionProps> = ({
                 {/* Fallback gradient for missing images */}
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${getGradientByIndex(
-                    activeIndex
+                    activeIndex,
                   )} opacity-0 hover:opacity-10 transition-opacity`}
                 />
               </div>

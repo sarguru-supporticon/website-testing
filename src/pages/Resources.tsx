@@ -6,7 +6,14 @@ import { Link, useSearchParams } from "react-router-dom";
 import { resources } from "@/data/resources";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 import { CaseStudiesList } from "@/components/CaseStudiesList";
-import { Play, Clock, ArrowRight, Sparkles, BookOpen, CalendarDays } from "lucide-react";
+import {
+  Play,
+  Clock,
+  ArrowRight,
+  Sparkles,
+  BookOpen,
+  CalendarDays,
+} from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import { assetUrl } from "@/lib/baseUrl";
 
@@ -27,16 +34,18 @@ const EventsView = () => {
         Upcoming & Past Events
       </div>
       <h2 className="font-display text-4xl font-extrabold mb-8 text-slate-900 leading-tight">
-        Empowering customers to <span className="text-green-600">learn and grow</span> together
+        Empowering customers to{" "}
+        <span className="text-green-600">learn and grow</span> together
       </h2>
       <p className="text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto">
-        At events we showcase the success stories of our customers, and bring digital transformation & service experience leaders together.
+        At events we showcase the success stories of our customers, and bring
+        digital transformation & service experience leaders together.
       </p>
 
       {/* Two Cards Section */}
       <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Past Events Card - Left Side */}
-        <div 
+        <div
           onClick={() => setShowPastEventDetails(!showPastEventDetails)}
           className="bg-white/60 backdrop-blur-md border border-green-100 rounded-3xl p-8 shadow-lg relative overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 hover:border-green-300"
         >
@@ -45,20 +54,31 @@ const EventsView = () => {
             <h3 className="text-2xl font-bold mb-6 text-slate-900">
               ✅ Past Events
             </h3>
-            <p className="text-slate-600 font-medium text-lg mb-4">SupportIcon HackFest 2025</p>
-            <p className="text-slate-500 text-sm">October 31 – November 1, 2025</p>
-            <p className="text-green-600 font-semibold mt-4">{showPastEventDetails ? "Hide Details" : "View Details"} →</p>
+            <p className="text-slate-600 font-medium text-lg mb-4">
+              SupportIcon HackFest 2025
+            </p>
+            <p className="text-slate-500 text-sm">
+              October 31 to November 1, 2025
+            </p>
+            <p className="text-green-600 font-semibold mt-4">
+              {showPastEventDetails ? "Hide Details" : "View Details"} →
+            </p>
           </div>
         </div>
 
         {/* Upcoming Events Card - Right Side */}
         <div className="bg-white/60 backdrop-blur-md border border-green-100 rounded-3xl p-8 shadow-lg relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-48 h-48 rounded-full blur-[80px] -z-10 mix-blend-multiply opacity-50" style={{backgroundColor: '#1A7FB5'}}></div>
+          <div
+            className="absolute top-0 right-0 w-48 h-48 rounded-full blur-[80px] -z-10 mix-blend-multiply opacity-50"
+            style={{ backgroundColor: "#1A7FB5" }}
+          ></div>
           <div className="text-left">
             <h3 className="text-2xl font-bold mb-6 text-slate-900">
               📅 Upcoming Events
             </h3>
-            <p className="text-slate-600 font-medium text-lg">Stay tuned! We'll be announcing new events and webinars soon.</p>
+            <p className="text-slate-600 font-medium text-lg">
+              Stay tuned! We'll be announcing new events and webinars soon.
+            </p>
           </div>
         </div>
       </div>
@@ -67,28 +87,43 @@ const EventsView = () => {
       {showPastEventDetails && (
         <div className="mt-8 bg-white/60 backdrop-blur-md border border-green-100 rounded-3xl p-6 md:p-12 shadow-lg relative overflow-hidden text-left animate-in fade-in zoom-in duration-500">
           <div className="absolute top-0 right-0 w-64 h-64 bg-green-200 rounded-full blur-[80px] -z-10 mix-blend-multiply opacity-50"></div>
-          
+
           <div className="bg-slate-50/50 rounded-2xl p-6 md:p-8">
             <h4 className="text-2xl font-bold mb-4 text-slate-900">
               🚀 SupportIcon HackFest 2025
             </h4>
-            
+
             <p className="text-lg text-slate-700 mb-6 leading-relaxed">
-              A 2-Day Intensive Development Sprint — where students and early-career builders got hands-on with real ticketing system software development, from first idea to market-ready pitch.
+              A 2-Day Intensive Development Sprint, where students and early
+              career builders got hands on with real ticketing system software
+              development, from first idea to market ready pitch.
             </p>
-            
+
             <div className="bg-green-50/50 border border-green-100 rounded-2xl p-6 mb-8">
-              <h5 className="font-semibold text-slate-900 mb-4">Event Details</h5>
+              <h5 className="font-semibold text-slate-900 mb-4">
+                Event Details
+              </h5>
               <ul className="space-y-2 text-slate-700 text-sm">
-                <li><strong>Date:</strong> October 31 – November 1, 2025</li>
-                <li><strong>Time:</strong> 9:00 AM – 5:00 PM (IST)</li>
-                <li><strong>Venue:</strong> Annapoorana Engineering College, Salem, Tamil Nadu, India</li>
+                <li>
+                  <strong>Date:</strong> October 31 to November 1, 2025
+                </li>
+                <li>
+                  <strong>Time:</strong> 9:00 AM to 5:00 PM (IST)
+                </li>
+                <li>
+                  <strong>Venue:</strong> Annapoorana Engineering College,
+                  Salem, Tamil Nadu, India
+                </li>
               </ul>
             </div>
 
-            <h5 className="text-xl font-bold mb-4 text-slate-900">Not Your Traditional Hackathon</h5>
+            <h5 className="text-xl font-bold mb-4 text-slate-900">
+              Not Your Traditional Hackathon
+            </h5>
             <p className="text-slate-700 mb-6 leading-relaxed">
-              Most hackathons end at 'build something cool'. HackFest 2025 took participants further — applying the same industrial standards used to build the best ticketing system products in the market.
+              Most hackathons end at 'build something cool'. HackFest 2025 took
+              participants further, applying the same industrial standards used
+              to build the best ticketing system products in the market.
             </p>
           </div>
         </div>
@@ -97,19 +132,18 @@ const EventsView = () => {
   );
 };
 
-
 // Estimate reading time
 const readingTime = (excerpt: string) => {
   const words = excerpt.split(" ").length * 15; // approx full article words
   return Math.max(3, Math.round(words / 200));
 };
 
-// Featured card — for the top side-by-side articles
+// Featured card, for the top side by side articles
 const BlogFeaturedCard = ({
   article,
   index,
 }: {
-  article: typeof resources[0];
+  article: (typeof resources)[0];
   index: number;
 }) => {
   const { ref, revealClasses } = useReveal();
@@ -136,16 +170,21 @@ const BlogFeaturedCard = ({
             <div className="absolute bottom-0 left-0 right-0 p-6">
               <div className="flex items-center gap-3 mb-2">
                 <span className="bg-green-500/20 backdrop-blur text-green-300 text-[10px] font-bold px-2.5 py-1 rounded-full border border-green-400/30">
-                  {article.category === "Elevate Your Support" ? "🚀 Elevate" : "✨ Exp."}
+                  {article.category === "Elevate Your Support"
+                    ? "🚀 Elevate"
+                    : "✨ Exp."}
                 </span>
                 <span className="flex items-center gap-1 text-white/70 text-[10px]">
-                  <Clock className="w-3 h-3" /> {readingTime(article.excerpt)} min read
+                  <Clock className="w-3 h-3" /> {readingTime(article.excerpt)}{" "}
+                  min read
                 </span>
               </div>
               <h2 className="text-xl md:text-2xl font-bold text-white leading-tight mb-2 transition-colors duration-300">
                 {article.title}
               </h2>
-              <p className="text-white/70 text-xs line-clamp-2 mb-3">{article.excerpt}</p>
+              <p className="text-white/70 text-xs line-clamp-2 mb-3">
+                {article.excerpt}
+              </p>
               <span className="inline-flex items-center gap-2 text-slate-300 font-bold text-xs group-hover:gap-3 transition-all duration-300">
                 Read full article <ArrowRight className="w-3.5 h-3.5" />
               </span>
@@ -162,7 +201,7 @@ const BlogCard = ({
   article,
   index,
 }: {
-  article: typeof resources[0];
+  article: (typeof resources)[0];
   index: number;
 }) => {
   const { ref, revealClasses } = useReveal();
@@ -174,7 +213,6 @@ const BlogCard = ({
     >
       <Link to={`/resources/${article.slug}`} className="group block h-full">
         <div className="h-full flex flex-col rounded-2xl overflow-hidden bg-white/75 backdrop-blur-md border border-green-100 shadow-sm hover:shadow-md hover:border-green-300 transition-all duration-300">
-
           {/* Image */}
           <div className="relative h-44 overflow-hidden flex-shrink-0">
             <ImageWithLoader
@@ -188,7 +226,9 @@ const BlogCard = ({
             {/* Category badge */}
             <div className="absolute top-3 left-3">
               <span className="bg-white/95 backdrop-blur text-green-700 text-[9px] font-bold px-2 py-0.5 rounded-full shadow-sm border border-green-100/50">
-                {article.category === "Elevate Your Support" ? "🚀 Elevate" : "✨ Exp."}
+                {article.category === "Elevate Your Support"
+                  ? "🚀 Elevate"
+                  : "✨ Exp."}
               </span>
             </div>
           </div>
@@ -222,7 +262,9 @@ const BlogCard = ({
                 <div className="w-6 h-6 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center">
                   <BookOpen className="w-3 h-3 text-white" />
                 </div>
-                <span className="text-[10px] font-medium text-slate-500 group-hover/author:text-white transition-colors">{article.author || "Help Dude"}</span>
+                <span className="text-[10px] font-medium text-slate-500 group-hover/author:text-white transition-colors">
+                  {article.author || "Help Dude"}
+                </span>
               </div>
               <span className="inline-flex items-center gap-1 text-[10px] font-bold text-slate-500 group-hover:gap-2 transition-all duration-300">
                 Read more <ArrowRight className="w-3 h-3" />
@@ -240,13 +282,13 @@ const Resources = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const activeTab = searchParams.get("tab") || "sources";
 
-  // First 2 articles for the top side-by-side section
+  // First 2 articles for the top side by side section
   const [featured1, featured2, ...rest] = resources;
 
   return (
     <main className="min-h-screen bg-transparent pb-20 overflow-hidden">
       <SEO
-        title="Resources — SupportIcon"
+        title="Resources, SupportIcon"
         description="Insights and guides for support engineering leaders and practitioners."
         canonicalPath="/resources"
         jsonLd={{
@@ -259,7 +301,7 @@ const Resources = () => {
       <section className="container mx-auto px-4 py-8 md:py-16 relative">
         {/* ✅ Decorative Oval Background Shape - centered behind heading */}
         <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[140%] max-w-[1200px] aspect-[2/1] bg-green-100/40 rounded-[100%] blur-3xl -z-10 animate-in fade-in zoom-in duration-1000" />
-        
+
         {/* Header content */}
         <div className="text-center mb-8 relative z-10">
           <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 text-xs font-semibold px-4 py-1.5 rounded-full mb-4 shadow-sm border border-green-200/50">
@@ -270,7 +312,8 @@ const Resources = () => {
             Resource Hub
           </h1>
           <p className="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
-            Workflows, AI best practices, and stories from the frontlines of support engineering.
+            Workflows, AI best practices, and stories from the frontlines of
+            support engineering.
           </p>
         </div>
 
@@ -300,9 +343,12 @@ const Resources = () => {
             <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
               <BookOpen className="w-8 h-8 text-green-600" />
             </div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Download Our Sources</h2>
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">
+              Download Our Sources
+            </h2>
             <p className="text-lg text-slate-500 mb-8 max-w-xl mx-auto">
-              In-depth playbooks crafted for support teams — download and share with your crew.
+              In depth playbooks crafted for support teams, download and share
+              with your crew.
             </p>
             <Link
               to="/sources"
@@ -317,13 +363,27 @@ const Resources = () => {
         ) : activeTab === "videos" ? (
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold text-slate-900 mb-3">Watch &amp; Learn</h2>
-              <p className="text-slate-500">See Supporticon in action — product walkthroughs, demos, and insights.</p>
+              <h2 className="text-3xl font-bold text-slate-900 mb-3">
+                Watch &amp; Learn
+              </h2>
+              <p className="text-slate-500">
+                See Supporticon in action, product walkthroughs, demos, and
+                insights.
+              </p>
             </div>
             <div className="bg-white/70 backdrop-blur-md rounded-3xl border border-green-100 shadow-xl overflow-hidden">
               <div className="relative aspect-video bg-gradient-to-br from-slate-900 to-slate-800">
-                <video className="w-full h-full object-contain bg-white" controls playsInline poster={videoThumbnail} controlsList="nodownload">
-                  <source src={assetUrl("/supporticon_video_720p.mp4")} type="video/mp4" />
+                <video
+                  className="w-full h-full object-contain bg-white"
+                  controls
+                  playsInline
+                  poster={videoThumbnail}
+                  controlsList="nodownload"
+                >
+                  <source
+                    src={assetUrl("/supporticon_video_720p.mp4")}
+                    type="video/mp4"
+                  />
                   Your browser does not support the video tag.
                 </video>
               </div>
@@ -332,23 +392,29 @@ const Resources = () => {
                   <div className="w-9 h-9 bg-green-100 rounded-full flex items-center justify-center">
                     <Play className="w-4 h-4 text-green-600 ml-0.5" />
                   </div>
-                  <span className="text-xs font-bold uppercase tracking-widest text-green-600">Product Demo</span>
+                  <span className="text-xs font-bold uppercase tracking-widest text-green-600">
+                    Product Demo
+                  </span>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Supporticon — See It in Action</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                  Supporticon, See It in Action
+                </h3>
                 <p className="text-slate-500 text-sm leading-relaxed">
-                  Watch how Supporticon empowers support engineers to find answers instantly, resolve tickets faster, and eliminate burnout — all from one unified AI-powered platform.
+                  Watch how Supporticon empowers support engineers to find
+                  answers instantly, resolve tickets faster, and eliminate
+                  burnout, all from one unified AI powered platform.
                 </p>
               </div>
             </div>
           </div>
         ) : activeTab === "events" ? (
           <div className="max-w-6xl mx-auto">
-             <EventsView />
+            <EventsView />
           </div>
         ) : (
           /* Default Resource Grid Layout */
           <div>
-            {/* Top Side-by-Side Featured Articles */}
+            {/* Top Side by Side Featured Articles */}
             <div className="grid md:grid-cols-2 gap-8 mb-16">
               <BlogFeaturedCard article={featured1} index={0} />
               <BlogFeaturedCard article={featured2} index={1} />
@@ -357,18 +423,16 @@ const Resources = () => {
             {/* Section Divider */}
             <div className="flex items-center gap-4 my-12">
               <div className="flex-1 h-px bg-gradient-to-r from-transparent via-green-100 to-transparent" />
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400 px-4">Latest Insights</span>
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400 px-4">
+                Latest Insights
+              </span>
               <div className="flex-1 h-px bg-gradient-to-r from-transparent via-green-100 to-transparent" />
             </div>
 
             {/* Consistently 3 columns for regular grid on desktop */}
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {rest.map((article, i) => (
-                <BlogCard
-                  key={article.slug}
-                  article={article}
-                  index={i}
-                />
+                <BlogCard key={article.slug} article={article} index={i} />
               ))}
             </div>
           </div>
