@@ -16,8 +16,6 @@ import {
   Shield,
   Zap,
   Clock,
-  ArrowRight,
-  FileText,
   Rocket,
   XCircle,
   CheckCircle,
@@ -26,10 +24,8 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 import { useState, useEffect } from "react";
-import { DotLottiePlayer } from "@dotlottie/react-player";
-import businessTeamAnimation from "@/assets/business-team.lottie";
-import { CXLeadersForm } from "../components/CXLeadersForm";
 import { motion } from "framer-motion";
+import { HeroSection } from "@/components/HeroSection";
 
 const steps = [
   {
@@ -124,16 +120,6 @@ const Home = () => {
   useScrollToTop();
   const navigate = useNavigate();
 
-  const [showCXForm, setShowCXForm] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
-
   return (
     <>
       <SEO
@@ -152,142 +138,7 @@ const Home = () => {
       <main className="relative">
 
         {/* ── HERO ─────────────────────────────────────────────────────── */}
-        <section className="relative min-h-[92vh] flex items-center overflow-hidden pt-16 pb-24">
-          {/* Ambient hero glows */}
-          <div className="absolute top-0 right-0 w-[650px] h-[650px] rounded-full bg-gradient-to-br from-emerald-100/70 to-teal-50/30 blur-[100px] -z-10" />
-          <div className="absolute -bottom-20 -left-20 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-blue-100/50 to-transparent blur-[80px] -z-10" />
-
-          <div className="container mx-auto px-4 md:px-8 lg:px-12">
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
-
-              {/* Left: content */}
-              <div className="order-2 md:order-1">
-                <FadeUp delay={0}>
-                  {/* Badge */}
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-200/70 text-emerald-700 text-xs font-bold uppercase tracking-widest mb-8">
-                    <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-                    AI Powered Helpdesk Software
-                  </div>
-                </FadeUp>
-
-                <FadeUp delay={0.08}>
-                  <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] text-slate-900">
-                    <span className="bg-gradient-to-r from-green-500 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
-                      Who supports
-                    </span>{" "}
-                    <span className="block">the support team?</span>
-                  </h1>
-                </FadeUp>
-
-                <FadeUp delay={0.16}>
-                  <h2 className="mt-6 text-xl md:text-2xl font-semibold text-slate-700 leading-snug">
-                    For SaaS Teams That Drive Retention.
-                  </h2>
-                  <p className="mt-4 text-lg text-slate-500 leading-relaxed max-w-xl">
-                    HelpDude gives your support engineers unified knowledge search,
-                    one-click AI email drafting, and intelligent escalation routing
-                    so every ticket is resolved faster and every customer stays longer.
-                  </p>
-                </FadeUp>
-
-                <FadeUp delay={0.24}>
-                  <div className="mt-10 flex flex-col sm:flex-row gap-3">
-                    <Button
-                      size="lg"
-                      variant="hero"
-                      className="rounded-full px-8 py-6 text-base font-bold shadow-lg shadow-emerald-200 hover:shadow-emerald-300 hover:scale-[1.03] transition-all duration-300"
-                      onClick={() =>
-                        window.open(
-                          "https://www.freshworks.com/apps/helpdude_1/",
-                          "_blank",
-                          "noopener,noreferrer",
-                        )
-                      }
-                    >
-                      Start Your Free Trial
-                      <ArrowRight className="w-4 h-4 ml-1" />
-                    </Button>
-                    <Button
-                      size="lg"
-                      variant="outline"
-                      className="rounded-full px-8 py-6 text-base font-semibold border-slate-200 bg-white hover:bg-slate-50 text-slate-800 hover:scale-[1.02] transition-all duration-300"
-                      onClick={() => navigate("/product")}
-                    >
-                      Watch How It Works
-                    </Button>
-                  </div>
-                </FadeUp>
-
-                {/* Trust badges */}
-                <FadeUp delay={0.32}>
-                  <div className="mt-8 grid grid-cols-2 gap-3 max-w-md">
-                    {[
-                      { icon: Clock, text: "Setup in under 15 minutes" },
-                      { icon: Plug, text: "No IT dependency" },
-                      { icon: Shield, text: "Enterprise-grade security" },
-                      { icon: Brain, text: "AWS + MongoDB Atlas" },
-                    ].map((b) => (
-                      <div
-                        key={b.text}
-                        className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-white border border-slate-100 shadow-sm"
-                      >
-                        <b.icon className="w-4 h-4 text-emerald-500 shrink-0" />
-                        <span className="text-slate-700 text-xs font-semibold leading-tight">
-                          {b.text}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </FadeUp>
-              </div>
-
-              {/* Right: visual */}
-              <div className="relative order-1 md:order-2">
-                <FadeUp delay={0.12}>
-                  {/* Glow behind card */}
-                  <div className="absolute inset-8 bg-gradient-to-br from-emerald-200/60 to-teal-200/40 rounded-3xl blur-3xl" />
-
-                  <div className="relative bg-white/60 backdrop-blur-xl rounded-3xl border border-white shadow-2xl shadow-slate-200/50 overflow-hidden p-2">
-                    {/* Toolbar strip */}
-                    <div className="flex items-center gap-1.5 px-4 py-3 border-b border-slate-100/80">
-                      <div className="w-3 h-3 rounded-full bg-red-400" />
-                      <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                      <div className="w-3 h-3 rounded-full bg-green-400" />
-                      <span className="ml-3 text-xs text-slate-400 font-medium">
-                        HelpDude — AI Helpdesk
-                      </span>
-                    </div>
-
-                    <div className="relative aspect-video">
-                      <DotLottiePlayer
-                        src={businessTeamAnimation}
-                        autoplay
-                        loop
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-
-                    {/* CX Insights overlay button */}
-                    <div className="absolute bottom-6 right-6 z-20">
-                      <Button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setShowCXForm(true);
-                        }}
-                        variant="hero"
-                        size="sm"
-                        className="rounded-full px-4 shadow-lg shadow-emerald-200 hover:scale-105 transition-all duration-300"
-                      >
-                        <FileText className="w-3.5 h-3.5 mr-1.5" />
-                        CX Insights
-                      </Button>
-                    </div>
-                  </div>
-                </FadeUp>
-              </div>
-            </div>
-          </div>
-        </section>
+        <HeroSection />
 
         {/* ── FEATURES GRID ────────────────────────────────────────────── */}
         <section className="py-24 md:py-32">
