@@ -1,9 +1,28 @@
+import { Component, type ReactNode, type ErrorInfo } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+
+class ErrorBoundary extends Component<{ children: ReactNode }, { error: Error | null }> {
+  state = { error: null };
+  static getDerivedStateFromError(error: Error) { return { error }; }
+  componentDidCatch(error: Error, info: ErrorInfo) { console.error("App crash:", error, info); }
+  render() {
+    if (this.state.error) {
+      const err = this.state.error as Error;
+      return (
+        <div style={{ padding: "2rem", fontFamily: "monospace", color: "#dc2626", background: "#fff" }}>
+          <h2 style={{ fontSize: "1.25rem", marginBottom: "0.5rem" }}>App Error (check console for details)</h2>
+          <pre style={{ whiteSpace: "pre-wrap", fontSize: "0.8rem", color: "#374151" }}>{err.message}{"\n\n"}{err.stack}</pre>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
@@ -100,6 +119,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
+    <ErrorBoundary>
     <QueryClientProvider client={queryClient}>
       <HelmetProvider>
         <TooltipProvider>
@@ -151,6 +171,7 @@ function App() {
         </TooltipProvider>
       </HelmetProvider>
     </QueryClientProvider>
+    </ErrorBoundary>
   );
 }
 
