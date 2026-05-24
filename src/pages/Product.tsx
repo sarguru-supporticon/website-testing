@@ -28,6 +28,7 @@ import heroImage from "@/assets/home-imge.png";
 import videoThumbnail from "@/assets/thmb.png";
 import { supporticonUploads } from "@/assets/supporticon-uploads";
 import ImageZoom from "@/components/ui/image-zoom";
+import Marquee from "@/components/Marquee";
 
 const Product = () => {
   useScrollToTop();
@@ -59,6 +60,9 @@ const Product = () => {
       />
 
       <RequestDemoDialog open={open} onOpenChange={setOpen} />
+
+      {/* Technology Partner Banner — Product page only */}
+      <Marquee />
 
       {/* Hero / Video Demo Section */}
       <section className="container mx-auto px-4 py-6 md:py-20 animate-in fade-in duration-1000">

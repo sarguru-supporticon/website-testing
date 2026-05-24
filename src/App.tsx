@@ -20,7 +20,6 @@ import Terms from "./pages/Terms";
 import Legal from "./pages/Legal";
 import SiteHeader from "./components/layout/SiteHeader";
 import SiteFooter from "./components/layout/SiteFooter";
-import Marquee from "./components/Marquee";
 import Chatbot from "./components/Chatbot";
 import ScrollToTop from "./components/ScrollToTop";
 import { WaveBackground } from "./components/WaveBackground";
@@ -122,7 +121,6 @@ function App() {
             >
               <WaveBackground />
               <SiteHeader />
-              <Marquee />
 
               <Routes>
                 <Route path="/" element={<Index />} />
