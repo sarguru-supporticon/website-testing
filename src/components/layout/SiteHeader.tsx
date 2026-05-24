@@ -164,16 +164,20 @@ export const SiteHeader = () => {
 
       {/* ── Header ────────────────────────────────────────────────────── */}
       <motion.header
-        initial={{ y: -8, opacity: 0 }}
+        initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className={`sticky top-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-white/90 backdrop-blur-xl border-b border-slate-200/60 shadow-[0_1px_20px_rgba(0,0,0,0.06)]"
-            : "bg-white/70 backdrop-blur-lg border-b border-transparent"
-        }`}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="fixed top-0 inset-x-0 z-50"
       >
-        <div className="container mx-auto flex h-[68px] items-center justify-between px-4 md:px-8">
+        {/* Inner pill — starts invisible, gains glass on scroll */}
+        <div
+          className={`mx-auto transition-all duration-500 ease-out ${
+            scrolled
+              ? "max-w-5xl mt-3 rounded-2xl bg-white/80 backdrop-blur-2xl shadow-[0_4px_32px_rgba(0,0,0,0.08)] border border-white/60"
+              : "max-w-7xl mt-0 rounded-none bg-transparent backdrop-blur-none shadow-none border-transparent"
+          }`}
+        >
+        <div className="flex h-[64px] items-center justify-between px-5 md:px-8">
 
           {/* Logo */}
           <Link
@@ -210,8 +214,8 @@ export const SiteHeader = () => {
                       `relative z-10 flex items-center gap-1 px-4 py-2 text-[13px] font-semibold tracking-tight rounded-full transition-all duration-200
                        ${
                          isActive
-                           ? "text-primary bg-primary/8"
-                           : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/70"
+                           ? "text-primary bg-primary/10"
+                           : "text-slate-700 hover:text-slate-900 hover:bg-black/5"
                        }`
                     }
                   >
@@ -335,20 +339,21 @@ export const SiteHeader = () => {
             >
               Book Demo
             </Button>
-          </div>
-        </div>
+          </div>{/* end right-actions */}
+        </div>{/* end flex row */}
+        </div>{/* end pill wrapper */}
 
-        {/* Mobile menu */}
+        {/* Mobile menu — floats below the pill */}
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.28, ease: [0.4, 0, 0.2, 1] }}
-              className="md:hidden border-t border-slate-100 bg-white/95 backdrop-blur-xl overflow-hidden"
+              initial={{ opacity: 0, y: -8, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -8, scale: 0.97 }}
+              transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+              className="md:hidden mx-4 mt-2 rounded-2xl bg-white/95 backdrop-blur-2xl shadow-[0_8px_40px_rgba(0,0,0,0.12)] border border-white/70 overflow-hidden"
             >
-              <nav className="container mx-auto px-4 py-5 space-y-1">
+              <nav className="px-4 py-5 space-y-1">
                 {nav.map((n) => (
                   <div key={n.to} className="flex flex-col">
                     <NavLink

@@ -121,6 +121,8 @@ function App() {
             >
               <WaveBackground />
               <SiteHeader />
+              {/* Spacer so fixed navbar doesn't overlap page content */}
+              <div className="h-[64px]" />
 
               <Routes>
                 <Route path="/" element={<Index />} />
